@@ -60,10 +60,58 @@ const IEvents = () => {
         </video>
 
         {/* Events Section */}
-        <section hidden className="events">
+        <section className="events">
           <h1 className="text-center text-white text-decoration-underline p-5 text-4xl">
             Upcoming Events
           </h1>
+          <div className="eventsSection row align-items-center event-block no-gutters margin-40px-bottom widgets-dark typo-light bg-gradient">
+            <div className="col-lg-5 col-sm-12" style={{ paddingLeft: 0 }}>
+              <div className="position-relative">
+                <img
+                  className="eventImg"
+                  src="../img/TechBlitz.webp"
+                  alt="TechBlitz"
+                />
+                <div className="events-date">
+                  <div className="font-size28">21</div>
+                  <div className="font-size14">March</div>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-7 col-sm-12">
+              <div className="padding-50px-lr md-padding-50px-lr sm-padding-30px-all xs-padding-25px-all">
+                <h3 className="margin-15px-bottom md-margin-10px-bottom font-size22 md-font-size20 xs-font-size18 font-weight-500">
+                  <Link
+                    to="https://techblitz2025.netlify.app/"
+                    className="text-theme-color evnt_title"
+                  >
+                    Techblitz Challenge 2025
+                  </Link>
+                </h3>
+                <ul className="event-time margin-10px-bottom md-margin-5px-bottom">
+                  <li>
+                    <i className="fa fa-clock-o margin-10px-right"></i>
+                    10:00 AM - 05:00 PM
+                  </li>
+                </ul>
+                <div className="summary" id="summary">
+                  <p className="collapse1" id="collapseSummary">
+                    Techblitz redefines coding competitions by embracing AI
+                    tools, breaking away from traditional restrictions.
+                    Organized by NSDC, this event offers a platform to explore
+                    Data Science, LLM integration, and UI/UX Designing.
+                  </p>
+                  <Link
+                    className="btn btn-outline-dark butn small margin-10px-top md-no-margin-top"
+                    id="readMoreBtn"
+                    to="https://techblitz2025.netlify.app/"
+                  >
+                    Read More
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         <section className="events">
@@ -71,7 +119,7 @@ const IEvents = () => {
             Events 2024-25
           </h1>
           <div className="container p-3">
-          <div className="eventsSection row align-items-center event-block no-gutters margin-40px-bottom widgets-dark typo-light bg-gradient">
+            <div className="eventsSection row align-items-center event-block no-gutters margin-40px-bottom widgets-dark typo-light bg-gradient">
               <div className="col-lg-5 col-sm-12" style={{ paddingLeft: 0 }}>
                 <div className="position-relative">
                   <img
@@ -88,7 +136,10 @@ const IEvents = () => {
               <div className="col-lg-7 col-sm-12">
                 <div className="padding-50px-lr md-padding-50px-lr sm-padding-30px-all xs-padding-25px-all">
                   <h3 className="margin-15px-bottom md-margin-10px-bottom font-size22 md-font-size20 xs-font-size18 font-weight-500">
-                    <Link to="/productshowcase24" className="text-theme-color evnt_title">
+                    <Link
+                      to="/productshowcase24"
+                      className="text-theme-color evnt_title"
+                    >
                       TechX - Product Showcase
                     </Link>
                   </h3>
@@ -100,11 +151,17 @@ const IEvents = () => {
                   </ul>
                   <div className="summary" id="summary">
                     <p className="collapse1" id="collapseSummary">
-                   
-
-TechX 2024, organized by the Department of Artificial Intelligence and Data Science on September 27, 2024, showcased innovative products and cutting-edge technologies like the DJI AIR3S drone and blockchain tools. Held in Labs 114 and 115, the event featured 35 students across 17 teams presenting solutions from companies like Edba Academy and Tech Cryptors.  
-
-Guided by faculty coordinators, the event bridged academics and industry, promoting technical expertise, presentation skills, and professional growth through hands-on experience and collaboration.
+                      TechX 2024, organized by the Department of Artificial
+                      Intelligence and Data Science on September 27, 2024,
+                      showcased innovative products and cutting-edge
+                      technologies like the DJI AIR3S drone and blockchain
+                      tools. Held in Labs 114 and 115, the event featured 35
+                      students across 17 teams presenting solutions from
+                      companies like Edba Academy and Tech Cryptors. Guided by
+                      faculty coordinators, the event bridged academics and
+                      industry, promoting technical expertise, presentation
+                      skills, and professional growth through hands-on
+                      experience and collaboration.
                     </p>
                     <Link
                       className="btn btn-outline-dark butn small margin-10px-top md-no-margin-top"
@@ -117,7 +174,7 @@ Guided by faculty coordinators, the event bridged academics and industry, promot
                 </div>
               </div>
             </div>
-          <div className="eventsSection  row align-items-center event-block no-gutters margin-40px-bottom widgets-dark typo-light bg-gradient">
+            <div className="eventsSection  row align-items-center event-block no-gutters margin-40px-bottom widgets-dark typo-light bg-gradient">
               <div className="col-lg-5 col-sm-12" style={{ paddingLeft: 0 }}>
                 <div className="position-relative">
                   <img
@@ -134,7 +191,10 @@ Guided by faculty coordinators, the event bridged academics and industry, promot
               <div className="col-lg-7 col-sm-12">
                 <div className="padding-50px-lr md-padding-50px-lr sm-padding-30px-all xs-padding-25px-all">
                   <h3 className="margin-15px-bottom md-margin-10px-bottom font-size22 md-font-size20 xs-font-size18 font-weight-500">
-                    <Link to="/codeofiesta" className="text-theme-color evnt_title">
+                    <Link
+                      to="/codeofiesta"
+                      className="text-theme-color evnt_title"
+                    >
                       CODE-O-FIESTA
                     </Link>
                   </h3>
