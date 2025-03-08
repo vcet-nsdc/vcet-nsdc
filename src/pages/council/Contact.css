@@ -1,0 +1,8 @@
+@media (max-width: 768px) {
+    div {
+      padding: 10px;
+    }
+    .contact-info {
+      font-size: 14px;
+    }
+  }

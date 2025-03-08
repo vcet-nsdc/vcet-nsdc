@@ -1,0 +1,55 @@
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+    gap: 15px;
+    padding: 0 150px 0 150px;
+    justify-items: center;
+  }
+  /* Media query for tablets and small laptops (768px and below) */
+  @media (max-width: 768px) {
+    .card-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+      padding: 20px;
+    }
+  }
+  @media (min-width: 770px) and (max-width: 992px){
+    .card-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+      padding: 20px;
+    }
+  }
+
+  /* Media query for mobile phones (480px and below) */
+  @media (max-width: 480px) {
+    .card-container {
+      grid-template-columns: 1fr; /* 1 card per row */
+      padding: 20px;
+    }
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .core{
+    position: relative;
+    z-index: 999;
+  }
+
+  .core-span{
+    color: white;
+  }
+
+  /*headings-style*/
+  .deputy, .core {
+    font-family: 'Montserrat', sans-serif; /* A modern sans-serif font */
+    font-size: 36px; /* Increase the font size for a more prominent heading */
+    font-weight: bold; /* Add bold weight to make the text more prominent */
+    text-align: center; /* Center the text */
+    color: #f2eded; /* A dark gray color for better contrast */
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle text shadow for depth */
+    margin-bottom: 20px; /* Add some space below the heading */
+  }

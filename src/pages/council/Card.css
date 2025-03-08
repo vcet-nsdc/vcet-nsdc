@@ -1,0 +1,126 @@
+/* src/Card.css */
+
+.card {
+  width: 100%;
+  max-width: 280px;
+  /* Maintain a reasonable max width for cards */
+  padding: 0px !important;
+  margin: 15px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card-content {
+  padding: 2px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease;
+}
+
+.card:hover .card-image {
+  opacity: 0;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  /* Space between icons */
+}
+
+.links a {
+  color: #333;
+  /* Default color */
+  font-size: 24px;
+  /* Icon size */
+  text-decoration: none;
+  transition:
+    color 0.3s,
+    transform 0.3s;
+  /* Smooth transition */
+}
+
+.links a:hover {
+  color: #0077b5;
+  /* Change color on hover */
+  transform: scale(1.1);
+  /* Slightly enlarge on hover */
+}
+
+.card-title {
+  padding: 10px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+  /* Add some space between the title and subtitle */
+}
+
+/* Responsive styling for better layout on smaller screens */
+@media (max-width: 768px) {
+  .card {
+    max-width: 260px;
+  }
+
+  .card-title .title {
+    font-size: 16px;
+  }
+
+  .card-title .subtitle {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    max-width: 220px;
+  }
+
+  .card-title .title {
+    font-size: 14px;
+  }
+
+  .card-title .subtitle {
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 770px) and (max-width: 991px) {
+  .card {
+    width: 240px;
+    height: 380px;
+  }
+
+  .card-title .title {
+    font-size: 16px;
+  }
+
+  .card-title .subtitle {
+    font-size: 12px;
+  }
+}

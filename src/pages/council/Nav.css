@@ -1,0 +1,16 @@
+
+.nav-item-gap {
+    margin-right: 1rem;
+  }
+  @media (max-width: 991px) {
+    .navbar-collapse {
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .navbar-nav {
+      text-align: center;
+
+    }
+  }
+ 
