@@ -64,6 +64,7 @@ const IEvents = () => {
           <h1 className="text-center text-white text-decoration-underline p-5 text-4xl">
             Upcoming Events
           </h1>
+          <div className="container p-3">
           <div className="eventsSection row align-items-center event-block no-gutters margin-40px-bottom widgets-dark typo-light bg-gradient">
             <div className="col-lg-5 col-sm-12" style={{ paddingLeft: 0 }}>
               <div className="position-relative">
@@ -110,6 +111,7 @@ const IEvents = () => {
                   </Link>
                 </div>
               </div>
+            </div>
             </div>
           </div>
         </section>
