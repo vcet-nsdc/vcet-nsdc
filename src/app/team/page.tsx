@@ -1,8 +1,11 @@
+import Teams from '@/components/team/Teams'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>page</div>
+    <div>
+      <Teams/>
+    </div>
   )
 }
 
