@@ -1,6 +1,8 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 // Using standard img to avoid Next image domain config for now
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
+import ProfileCard from "./ProfileCard";
 
 // Define type for JSON structure
 interface TeamMember {
@@ -13,75 +15,103 @@ interface TeamMember {
   photo: string;
 }
 
-// Import JSON file via alias
-import teamData from "@staticdata/TE.json";
-
-// Tell TypeScript it’s an array of TeamMember
-const team: TeamMember[] = teamData as TeamMember[];
+// Load team JSON at runtime to avoid importing from public/
 
 const Teams: React.FC = () => {
+  const [beTeam, setBeTeam] = useState<TeamMember[]>([]);
+  const [teTeam, setTeTeam] = useState<TeamMember[]>([]);
+
+  useEffect(() => {
+    Promise.all([
+      fetch('/staticdata/BE.json').then(r => r.json()).catch(() => []),
+      fetch('/staticdata/TE.json').then(r => r.json()).catch(() => []),
+    ])
+    .then(([be, te]) => {
+      setBeTeam(Array.isArray(be) ? be : []);
+      setTeTeam(Array.isArray(te) ? te : []);
+    })
+    .catch(() => {
+      setBeTeam([]);
+      setTeTeam([]);
+    });
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <h1 className="text-3xl sm:text-4xl font-extrabold text-center mb-10 text-gray-900">
-        Meet Our Team
-      </h1>
-
-      {/* Responsive Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-6">
-        {team.map((member) => (
-          <div
-            key={member.id}
-            className="group bg-white border border-gray-200 shadow-md rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-          >
-            <div className="w-full h-56 overflow-hidden">
-              <img
-                src={member.photo.startsWith('http') ? member.photo : `/${member.photo}`}
-                alt={member.name}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                loading="lazy"
-              />
-            </div>
-
-            <div className="p-6">
-              <div className="text-center">
-                <h3 className="text-xl font-semibold text-gray-900">{member.name}</h3>
-                <p className="mt-1 inline-block rounded-full bg-gray-100 px-3 py-1 text-sm font-medium text-gray-700">
-                  {member.position}
-                </p>
-              </div>
-
-              <div className="mt-5 flex items-center justify-center gap-3">
-                <a
-                  href={`mailto:${member.email}`}
-                  className="inline-flex items-center justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                >
-                  Contact
-                </a>
-                <div className="flex items-center gap-4 text-2xl">
-                  <a
-                    href={member.instagram}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="Instagram"
-                    className="text-pink-500 hover:text-pink-600 transition-colors"
-                  >
-                    <FaInstagram />
-                  </a>
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="LinkedIn"
-                    className="text-blue-600 hover:text-blue-700 transition-colors"
-                  >
-                    <FaLinkedin />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
+    <div className="relative min-h-screen py-12 overflow-hidden bg-slate-950">
+      {/* Ripple Grid Background */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        {/* Dark vignette to deepen background */}
+        <div className="absolute inset-0" style={{ background: "radial-gradient(1200px circle at center, rgba(0,0,0,0.0) 20%, rgba(0,0,0,0.35) 78%)" }} />
+        {/* Static dual spotlights: left brighter, right slightly dimmer */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="spotlight-left absolute -top-60 -left-1/3 h-[170%] w-[200%] opacity-100 mix-blend-screen" />
+          <div className="spotlight-right absolute -top-60 -right-1/3 h-[170%] w-[200%] opacity-85 mix-blend-screen" />
+        </div>
       </div>
+      <div className="relative z-10">
+      <h1 className="text-3xl sm:text-4xl font-extrabold text-center mb-10 text-white">Meet Our Team</h1>
+
+      {/* HEADS Section (BE.json) */}
+      <div className="max-w-7xl mx-auto px-6">
+        <h2 className="text-center text-4xl sm:text-5xl font-extrabold tracking-wide text-white mb-8">HEADS</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {beTeam.map((member) => {
+            const avatar = member.photo.startsWith('http') ? member.photo : `/${member.photo}`;
+            return (
+              <ProfileCard
+                key={member.id}
+                name={member.name}
+                title={member.position}
+                avatarUrl={avatar}
+                enableTilt={true}
+                enableMobileTilt={false}
+                instagramUrl={member.instagram}
+                linkedinUrl={member.linkedin}
+                email={member.email}
+              />
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Deputys Section (TE.json) */}
+      <div className="max-w-7xl mx-auto px-6 mt-16">
+        <h2 className="text-center text-4xl sm:text-5xl font-extrabold tracking-wide text-white mb-8">Deputys</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {teTeam.map((member) => {
+            const avatar = member.photo.startsWith('http') ? member.photo : `/${member.photo}`;
+            return (
+              <ProfileCard
+                key={member.id}
+                name={member.name}
+                title={member.position}
+                avatarUrl={avatar}
+                enableTilt={true}
+                enableMobileTilt={false}
+                instagramUrl={member.instagram}
+                linkedinUrl={member.linkedin}
+                email={member.email}
+              />
+            );
+          })}
+        </div>
+      </div>
+      </div>
+    {/* Scoped styles for static spotlights */}
+    <style jsx>{`
+      .spotlight-left {
+        background:
+          radial-gradient(1400px 560px at 32% 0%, rgba(255,255,255,0.32), rgba(255,255,255,0) 62%),
+          radial-gradient(1200px 480px at 32% 0%, rgba(99,102,241,0.45), rgba(99,102,241,0) 57%);
+        filter: blur(0.5px);
+      }
+      .spotlight-right {
+        background:
+          radial-gradient(1300px 520px at 68% 0%, rgba(255,255,255,0.22), rgba(255,255,255,0) 62%),
+          radial-gradient(1100px 440px at 68% 0%, rgba(59,130,246,0.35), rgba(59,130,246,0) 57%);
+        filter: blur(0.5px);
+      }
+    `}</style>
     </div>
   );
 };
