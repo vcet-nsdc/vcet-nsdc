@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Dosis, Geist, Geist_Mono, Manrope } from "next/font/google";
 import "./globals.css";
+import Navbar from "../components/Navbar";
 
 
 const manrope = Manrope({
@@ -28,10 +29,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${manrope.variable} ${dosis.variable} antialiased`}
+        className={`${manrope.variable} ${dosis.variable} antialiased dark`}
         suppressHydrationWarning={true}
       >
-        {children}
+        <Navbar />
+        <div className="">
+          {children}
+        </div>
       </body>
     </html>
   );

@@ -41,14 +41,13 @@ const Teams: React.FC = () => {
       {/* Ripple Grid Background */}
       <div className="pointer-events-none absolute inset-0 z-0">
         {/* Dark vignette to deepen background */}
-        <div className="absolute inset-0" style={{ background: "radial-gradient(1200px circle at center, rgba(0,0,0,0.0) 20%, rgba(0,0,0,0.35) 78%)" }} />
         {/* Static dual spotlights: left brighter, right slightly dimmer */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="spotlight-left absolute -top-60 -left-1/3 h-[170%] w-[200%] opacity-100 mix-blend-screen" />
           <div className="spotlight-right absolute -top-60 -right-1/3 h-[170%] w-[200%] opacity-85 mix-blend-screen" />
         </div>
       </div>
-      <div className="relative z-10">
+      <div className="relative z-10 mt-20">
       <h1 className="text-3xl sm:text-4xl font-extrabold text-center mb-10 text-white">Meet Our Team</h1>
 
       {/* HEADS Section (BE.json) */}
