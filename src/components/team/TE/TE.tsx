@@ -1,8 +1,9 @@
 import React from 'react'
+import Teams from '../Teams'
 
 const TE = () => {
   return (
-    <div>TE</div>
+    <Teams />
   )
 }
 
