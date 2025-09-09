@@ -71,21 +71,9 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
   };
 
   const overlayVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { 
-      opacity: 0, 
-      scale: 1,
-      transition: {
-        duration: 0.3,
-      }
-    },
-    hover: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.3,
-      }
-    }
+    hidden: { scale: 0.98 },
+    visible: { scale: 1 },
+    hover: { scale: 1 }
   };
 
   const contentVariants = {
@@ -98,6 +86,11 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
         delay: 0.2,
       }
     }
+  };
+
+  const iconContainerVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { opacity: 1, scale: 1 },
   };
 
   useEffect(() => {
@@ -123,7 +116,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
           <motion.img
             src={avatarUrl}
             alt={name}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition duration-300 ease-out group-hover:brightness-[0.55]"
             loading="lazy"
             variants={imageVariants}
             initial="hidden"
@@ -132,17 +125,16 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
           />
           {/* Hover social overlay */}
           <motion.div 
-            className="pointer-events-none absolute inset-0 flex items-center justify-center"
+            className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-150"
             variants={overlayVariants}
             initial="hidden"
             animate="visible"
-            whileHover="hover"
           >
             <motion.div 
-              className="pointer-events-auto flex items-center gap-4 rounded-full bg-slate-900/70 px-4 py-2 backdrop-blur-md shadow-lg"
-              initial={{ scale: 0.8, opacity: 0 }}
-              whileHover={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.2 }}
+              className="pointer-events-auto flex items-center gap-5 rounded-full bg-slate-900/70 px-5 py-3 backdrop-blur-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-150"
+              variants={iconContainerVariants}
+              initial="hidden"
+              animate="visible"
             >
               {instagramUrl && (
                 <motion.a
@@ -150,7 +142,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Instagram"
-                  className="text-pink-400 hover:text-pink-300 text-xl"
+                  className="text-white hover:text-pink-300 text-3xl"
                   whileHover={{ scale: 1.2, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -163,7 +155,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                   target="_blank"
                   rel="noreferrer"
                   aria-label="LinkedIn"
-                  className="text-sky-400 hover:text-sky-300 text-xl"
+                  className="text-white hover:text-sky-300 text-3xl"
                   whileHover={{ scale: 1.2, rotate: -5 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -174,7 +166,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                 <motion.a
                   href={`mailto:${email}`}
                   aria-label="Email"
-                  className="text-emerald-300 hover:text-emerald-200 text-xl"
+                  className="text-white hover:text-emerald-200 text-3xl"
                   whileHover={{ scale: 1.2, rotate: 3 }}
                   whileTap={{ scale: 0.9 }}
                 >
