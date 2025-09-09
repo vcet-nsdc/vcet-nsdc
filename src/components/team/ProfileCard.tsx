@@ -1,4 +1,5 @@
 'use client'
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { FaInstagram, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
@@ -41,7 +42,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-slate-700/20 to-slate-900/40 pointer-events-none" />
       <div className="relative overflow-hidden rounded-2xl">
         <div className="relative w-full h-[520px] overflow-hidden">
-          <img
+          <Image
             src={avatarUrl}
             alt={name}
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"

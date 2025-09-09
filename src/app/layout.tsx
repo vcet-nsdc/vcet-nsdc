@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Dosis, Geist, Geist_Mono, Manrope } from "next/font/google";
+import { Dosis, Manrope } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/Navbar";
+import ShaderBackground from "@/components/shader-background";
 
 
 const manrope = Manrope({
@@ -34,6 +35,7 @@ export default function RootLayout({
       >
         <Navbar />
         <div className="">
+          <ShaderBackground/>
           {children}
         </div>
       </body>
