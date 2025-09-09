@@ -1,5 +1,7 @@
 'use client'
+
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { FaInstagram, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 type ProfileCardProps = {
@@ -27,6 +29,77 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 }) => {
   const [tiltClass, setTiltClass] = useState("");
 
+  // Animation variants
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      scale: 0.8,
+      y: 50 
+    },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+      }
+    },
+    hover: {
+      scale: 1.05,
+      y: -10,
+      transition: {
+        duration: 0.3,
+      }
+    }
+  };
+
+  const imageVariants = {
+    hidden: { scale: 1.1, opacity: 0.8 },
+    visible: { 
+      scale: 1, 
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+      }
+    },
+    hover: {
+      scale: 1.1,
+      transition: {
+        duration: 0.3,
+      }
+    }
+  };
+
+  const overlayVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { 
+      opacity: 0, 
+      scale: 1,
+      transition: {
+        duration: 0.3,
+      }
+    },
+    hover: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.3,
+      }
+    }
+  };
+
+  const contentVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.6,
+        delay: 0.2,
+      }
+    }
+  };
+
   useEffect(() => {
     if (!enableTilt) return;
     const isMobile = typeof window !== "undefined" && window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
@@ -37,63 +110,105 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
   }, [enableTilt, enableMobileTilt]);
 
   return (
-    <div className={`group relative w-full max-w-[420px] mx-auto rounded-2xl border border-slate-800/60 bg-slate-800/50 backdrop-blur-sm shadow-xl transition-transform duration-300 ${tiltClass}`}>
+    <motion.div 
+      className={`group relative w-full max-w-[420px] mx-auto rounded-2xl border border-slate-800/60 bg-slate-800/50 backdrop-blur-sm shadow-xl transition-transform duration-300 ${tiltClass}`}
+      variants={cardVariants}
+      initial="hidden"
+      animate="visible"
+      whileHover="hover"
+    >
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-slate-700/20 to-slate-900/40 pointer-events-none" />
       <div className="relative overflow-hidden rounded-2xl">
-        <div className="relative w-full h-[520px] overflow-hidden">
-          <img
+        <div className="relative w-full h-[350px] sm:h-[400px] overflow-hidden">
+          <motion.img
             src={avatarUrl}
             alt={name}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            className="w-full h-full object-cover"
             loading="lazy"
+            variants={imageVariants}
+            initial="hidden"
+            animate="visible"
+            whileHover="hover"
           />
           {/* Hover social overlay */}
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-            <div className="pointer-events-auto flex items-center gap-4 rounded-full bg-slate-900/70 px-4 py-2 backdrop-blur-md shadow-lg">
+          <motion.div 
+            className="pointer-events-none absolute inset-0 flex items-center justify-center"
+            variants={overlayVariants}
+            initial="hidden"
+            animate="visible"
+            whileHover="hover"
+          >
+            <motion.div 
+              className="pointer-events-auto flex items-center gap-4 rounded-full bg-slate-900/70 px-4 py-2 backdrop-blur-md shadow-lg"
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileHover={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.2 }}
+            >
               {instagramUrl && (
-                <a
+                <motion.a
                   href={instagramUrl}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Instagram"
-                  className="text-pink-400 hover:text-pink-300 text-xl transform transition-transform duration-300 group-hover:scale-125"
+                  className="text-pink-400 hover:text-pink-300 text-xl"
+                  whileHover={{ scale: 1.2, rotate: 5 }}
+                  whileTap={{ scale: 0.9 }}
                 >
                   <FaInstagram />
-                </a>
+                </motion.a>
               )}
               {linkedinUrl && (
-                <a
+                <motion.a
                   href={linkedinUrl}
                   target="_blank"
                   rel="noreferrer"
                   aria-label="LinkedIn"
-                  className="text-sky-400 hover:text-sky-300 text-xl transform transition-transform duration-300 group-hover:scale-125"
+                  className="text-sky-400 hover:text-sky-300 text-xl"
+                  whileHover={{ scale: 1.2, rotate: -5 }}
+                  whileTap={{ scale: 0.9 }}
                 >
                   <FaLinkedin />
-                </a>
+                </motion.a>
               )}
               {email && (
-                <a
+                <motion.a
                   href={`mailto:${email}`}
                   aria-label="Email"
-                  className="text-emerald-300 hover:text-emerald-200 text-xl transform transition-transform duration-300 group-hover:scale-125"
+                  className="text-emerald-300 hover:text-emerald-200 text-xl"
+                  whileHover={{ scale: 1.2, rotate: 3 }}
+                  whileTap={{ scale: 0.9 }}
                 >
                   <FaEnvelope />
-                </a>
+                </motion.a>
               )}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
-        <div className="p-6">
+        <motion.div 
+          className="p-6"
+          variants={contentVariants}
+          initial="hidden"
+          animate="visible"
+        >
           <div className="text-center">
-            <h3 className="text-xl font-semibold text-white">{name}</h3>
-            <p className="mt-1 inline-block rounded-full bg-slate-700/60 px-3 py-1 text-sm font-medium text-slate-200">
+            <motion.h3 
+              className="text-xl font-semibold text-white"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              {name}
+            </motion.h3>
+            <motion.p 
+              className="mt-1 inline-block rounded-full bg-slate-700/60 px-3 py-1 text-sm font-medium text-slate-200"
+              whileHover={{ scale: 1.05, backgroundColor: "rgba(71, 85, 105, 0.8)" }}
+              transition={{ duration: 0.2 }}
+            >
               {title}
-            </p>
+            </motion.p>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

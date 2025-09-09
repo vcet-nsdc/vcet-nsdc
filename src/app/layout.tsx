@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Dosis, Geist, Geist_Mono, Manrope } from "next/font/google";
+import { Dosis, Manrope } from "next/font/google";
 import "./globals.css";
-import Navbar from "../components/Navbar";
-
+import ShaderBackground from "@/components/shader-background";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -27,15 +26,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-full">
       <body
-        className={`${manrope.variable} ${dosis.variable} antialiased dark`}
+        className={`${manrope.variable} ${dosis.variable} antialiased dark h-full flex flex-col`}
         suppressHydrationWarning={true}
       >
-        <Navbar />
-        <div className="">
-          {children}
+        
+        <div className="flex-1 relative">
+          <ShaderBackground/>
+          <div className="relative z-10">
+            {children}
+          </div>
         </div>
+        
       </body>
     </html>
   );
