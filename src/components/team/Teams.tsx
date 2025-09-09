@@ -41,7 +41,7 @@ const Teams: React.FC = () => {
       {/* Ripple Grid Background */}
       <div className="pointer-events-none absolute inset-0 z-0">
         {/* Dark vignette to deepen background */}
-        {/* Static dual spotlights: left brighter, right slightly dimmer */}
+         {/* Static dual spotlights: left brighter, right slightly dimmer */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="spotlight-left absolute -top-60 -left-1/3 h-[170%] w-[200%] opacity-100 mix-blend-screen" />
           <div className="spotlight-right absolute -top-60 -right-1/3 h-[170%] w-[200%] opacity-85 mix-blend-screen" />

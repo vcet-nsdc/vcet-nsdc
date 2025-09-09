@@ -56,7 +56,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Instagram"
-                  className="text-pink-400 hover:text-pink-300 text-xl"
+                  className="text-pink-400 hover:text-pink-300 text-xl transform transition-transform duration-300 group-hover:scale-125"
                 >
                   <FaInstagram />
                 </a>
@@ -67,7 +67,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                   target="_blank"
                   rel="noreferrer"
                   aria-label="LinkedIn"
-                  className="text-sky-400 hover:text-sky-300 text-xl"
+                  className="text-sky-400 hover:text-sky-300 text-xl transform transition-transform duration-300 group-hover:scale-125"
                 >
                   <FaLinkedin />
                 </a>
@@ -76,7 +76,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                 <a
                   href={`mailto:${email}`}
                   aria-label="Email"
-                  className="text-emerald-300 hover:text-emerald-200 text-xl"
+                  className="text-emerald-300 hover:text-emerald-200 text-xl transform transition-transform duration-300 group-hover:scale-125"
                 >
                   <FaEnvelope />
                 </a>
