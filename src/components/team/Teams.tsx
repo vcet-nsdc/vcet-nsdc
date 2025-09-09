@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 // Using standard img to avoid Next image domain config for now
 // import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import ProfileCard from "./ProfileCard";
-import Footer from "../Footer";
 // import ShaderBackground from "../shader-background";
 
 // Define type for JSON structure
@@ -89,8 +88,7 @@ const Teams: React.FC = () => {
         </div>
       </div>
       </div>
-      {/* Add bottom padding to ensure proper spacing before footer */}
-      <div className=""><Footer/></div>
+      
     </div>
   );
 };
