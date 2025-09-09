@@ -102,6 +102,10 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   font-family: var(--font-sans);
 }
