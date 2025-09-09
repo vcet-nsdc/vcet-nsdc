@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Contacts = () => {
+ const Contacts = () => {
   return (
     <section className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-10 mt-20">
       {/* Address Location (Google Map) */}
@@ -29,12 +29,12 @@ const Contacts = () => {
           <p>
             <span className="mr-2">📧</span>
             <span className="font-medium">Chairperson</span>:&nbsp;
-            <a className="underline hover:text-primary-light" href="mailto:ojasi.213579201@vcet.edu.in">shreya@vcet.edu.in</a>
+            <a className="underline hover:text-primary-light" href="shrya@vcet.edu.in">shrya@vcet.edu.in</a>
           </p>
           <p>
             <span className="mr-2">📧</span>
             <span className="font-medium">Secretary</span>:&nbsp;
-            <a className="underline hover:text-primary-light" href="mailto:Pia.s2215257201@vcet.edu.in">saloni.225257205@vcet.edu.in</a>
+            <a className="underline hover:text-primary-light" href="saloni.225257205@vcet.edu.in">  saloni.225257205@vcet.edu.in</a>
           </p>
           <p>
             <span className="mr-2">📧</span>
