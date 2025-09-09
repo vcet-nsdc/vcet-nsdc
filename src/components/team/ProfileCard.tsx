@@ -41,8 +41,8 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
     <div className={`group relative w-full max-w-[420px] mx-auto rounded-2xl border border-slate-800/60 bg-slate-800/50 backdrop-blur-sm shadow-xl transition-transform duration-300 ${tiltClass}`}>
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-slate-700/20 to-slate-900/40 pointer-events-none" />
       <div className="relative overflow-hidden rounded-2xl">
-        <div className="relative w-full h-[520px] overflow-hidden">
-          <Image
+        <div className="relative w-full h-[350px] sm:h-[400px] overflow-hidden">
+          <img
             src={avatarUrl}
             alt={name}
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"

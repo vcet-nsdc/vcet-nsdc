@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 // Using standard img to avoid Next image domain config for now
 // import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import ProfileCard from "./ProfileCard";
+import Footer from "../Footer";
 // import ShaderBackground from "../shader-background";
 
 // Define type for JSON structure
@@ -38,16 +39,14 @@ const Teams: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen py-12 overflow-hidden ">
-    
-      
+    <div className="relative py-12 overflow-hidden">
       <div className="relative z-10 mt-20">
       <h1 className="text-3xl sm:text-4xl font-extrabold text-center mb-10 text-white">Meet Our Team</h1>
 
       {/* HEADS Section (BE.json) */}
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-center text-4xl sm:text-5xl font-extrabold tracking-wide text-white mb-8">HEADS</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {beTeam.map((member) => {
             const avatar = member.photo.startsWith('http') ? member.photo : `/${member.photo}`;
             return (
@@ -68,9 +67,9 @@ const Teams: React.FC = () => {
       </div>
 
       {/* Deputys Section (TE.json) */}
-      <div className="max-w-7xl mx-auto px-6 mt-16">
+      <div className="max-w-7xl mx-auto px-6 mt-12">
         <h2 className="text-center text-4xl sm:text-5xl font-extrabold tracking-wide text-white mb-8">Deputys</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {teTeam.map((member) => {
             const avatar = member.photo.startsWith('http') ? member.photo : `/${member.photo}`;
             return (
@@ -90,8 +89,8 @@ const Teams: React.FC = () => {
         </div>
       </div>
       </div>
-    {/* Scoped styles for static spotlights */}
-   
+      {/* Add bottom padding to ensure proper spacing before footer */}
+      <div className=""><Footer/></div>
     </div>
   );
 };
