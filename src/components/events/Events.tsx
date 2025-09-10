@@ -1,8 +1,9 @@
 import React from 'react'
+import Upcoming from './upcoming/upcoming'
 
 const Events = () => {
   return (
-    <div>bnew pageewhsw</div>
+    <Upcoming />
   )
 }
 
