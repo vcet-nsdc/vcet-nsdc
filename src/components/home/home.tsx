@@ -1,6 +1,6 @@
 import React from 'react'
 import HeroSection from './Herosection'
-import MarqueeSlider from '@/components/ui/marquee-slider'
+// import MarqueeSlider from '@/components/ui/marquee-slider'
 
 const home = () => {
   return (
@@ -32,7 +32,7 @@ const home = () => {
             </div>
             <div className="mt-6 rounded-2xl border border-white/10 bg-slate-900/40 px-6 md:px-8 py-6 space-y-5 text-lg md:text-xl text-white/85 leading-relaxed shadow">
               <p>
-                VCET-NSDC, the Professional Student Chapter, represents a gateway to the world of Data Science and Artificial Intelligence. It's not just a chapter; it is a community of learning and growth. This professional chapter is part of a global network of 650+ chapters! This gives our students wide exposure and the chance to communicate and collaborate globally.
+                VCET-NSDC, the Professional Student Chapter, represents a gateway to the world of Data Science and Artificial Intelligence. It&apos;s not just a chapter; it is a community of learning and growth. This professional chapter is part of a global network of 650+ chapters! This gives our students wide exposure and the chance to communicate and collaborate globally.
               </p>
               <p>
                 The main aim of VCET-NSDC is to foster budding AI Engineers by providing them the opportunities to learn, explore, collaborate and enhance their skills in the field of Artificial Intelligence and Data Science.
@@ -127,9 +127,9 @@ const home = () => {
       </section>
 
       {/* Image Slider */}
-      <section className="max-w-7xl mx-auto px-6 pb-24">
+      {/* <section className="max-w-7xl mx-auto px-6 pb-24">
         <MarqueeSlider />
-      </section>
+      </section> */}
     </div>
   )
 }
