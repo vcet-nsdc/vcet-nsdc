@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Dosis, Manrope } from "next/font/google";
 import "./globals.css";
 import ShaderBackground from "@/components/shader-background";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -31,13 +33,14 @@ export default function RootLayout({
         className={`${manrope.variable} ${dosis.variable} antialiased dark h-full flex flex-col`}
         suppressHydrationWarning={true}
       >
-        
+        <Navbar/>
         <div className="flex-1 relative">
           <ShaderBackground/>
           <div className="relative z-10">
             {children}
           </div>
         </div>
+        <Footer/>
         
       </body>
     </html>
