@@ -1,6 +1,15 @@
 [
-    {
+   {
       "id": 1,
+      "name": "Shreya Wankhede",
+      "position": "Chairpreson",
+      "email": "shreya.225297202@vcet.edu.in",
+      "instagram": "https://www.instagram.com/shreyeeahh?igsh=amRucjlmNTRsMGxo/",
+      "linkedin": "https://www.linkedin.com/in/shreya-wankhede-880308260?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "photo": "https://images.unsplash.com/photo-1650954913935-05f7a819b745?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 2,
       "name": "Saloni Sutar",
       "position": "Secretary",
       "email": "saloni.225257205@vcet.edu.in",
@@ -10,7 +19,7 @@
     },
     
     {
-        "id": 2,
+        "id": 3,
         "name": "Dhir Surti",
         "position": "Treasurer",
         "email": "dhir.225247102@vcet.edu.in",
@@ -21,7 +30,7 @@
       },
       
     {
-        "id": 3,
+        "id": 4,
         "name": "Ninad Patil",
         "position": "Organizing Head",
         "email": "ninad.225097101@vcet.edu.in",
@@ -31,7 +40,7 @@
       },
 
       {
-        "id": 4,
+        "id": 5,
         "name": "Vishwatej Sarang",
         "position": "Organizing Head/Social Media Head/Website Head",
         "email": "vishwatej.225187101@vcet.edu.in",
@@ -41,7 +50,7 @@
       },
     
       {
-        "id": 5,
+        "id": 6,
         "name": "Aniruddh Sawant",
         "position": "Creative Head",
         "email": "aniruddh.225197108@vcet.edu.in",
@@ -51,12 +60,22 @@
       },
       
     {
-      "id": 6,
+      "id": 7,
       "name": "Gautam Chaudhari",
       "position": "Technical Head",
       "email": "gautam.224677101@vcet.edu.in",
       "instagram":"https://www.instagram.com/chaudhari.gautam09/",
       "linkedin": "https://www.linkedin.com/in/gautam-chaudhari-b70435279?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "photo": "https://images.unsplash.com/photo-1650954913935-05f7a819b745?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      },
+          
+    {
+      "id": 8,
+      "name": "Sakshi Prabhakar Patil",
+      "position": " Documentation & PR Head ",
+      "email": "sakshi.225117205@vcet.edu.in",
+      "instagram":"https://www.instagram.com/sakshi_11204_/",
+      "linkedin": " https://www.linkedin.com/in/sakshi-patil-3933a6328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       "photo": "https://images.unsplash.com/photo-1650954913935-05f7a819b745?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       }
       
