@@ -1,6 +1,6 @@
 import React from 'react'
 import HeroSection from './Herosection'
-import Slider_01 from '@/components/ui/ruixen-carousel-wave'
+import MarqueeSlider from '@/components/ui/marquee-slider'
 
 const home = () => {
   return (
@@ -45,22 +45,18 @@ const home = () => {
       {/* Stats Bar (Horizontal) */}
       <section className="max-w-6xl mx-auto px-6 pb-12">
         <div className="rounded-3xl border border-white/10 bg-black/30 backdrop-blur px-6 md:px-10 py-6 shadow-lg">
-          <ul className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
+          <ul className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 text-center">
             <li className="space-y-1">
-              <div className="text-4xl md:text-5xl font-extrabold text-purple-400">30+</div>
-              <div className="text-sm text-white/70">Core Members</div>
+              <div className="text-4xl md:text-5xl font-extrabold text-purple-400">50+</div>
+              <div className="text-sm text-white/70">Team Members</div>
             </li>
             <li className="space-y-1">
               <div className="text-4xl md:text-5xl font-extrabold text-purple-400">12+</div>
-              <div className="text-sm text-white/70">Workshops</div>
+              <div className="text-sm text-white/70">Events</div>
             </li>
             <li className="space-y-1">
               <div className="text-4xl md:text-5xl font-extrabold text-purple-400">1k+</div>
               <div className="text-sm text-white/70">Participants</div>
-            </li>
-            <li className="space-y-1">
-              <div className="text-4xl md:text-5xl font-extrabold text-purple-400">24</div>
-              <div className="text-sm text-white/70">Projects</div>
             </li>
           </ul>
         </div>
@@ -132,9 +128,7 @@ const home = () => {
 
       {/* Image Slider */}
       <section className="max-w-7xl mx-auto px-6 pb-24">
-        <div className="rounded-2xl border border-white/10 bg-black/30 backdrop-blur">
-          <Slider_01 />
-        </div>
+        <MarqueeSlider />
       </section>
     </div>
   )

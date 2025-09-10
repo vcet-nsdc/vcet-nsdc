@@ -64,15 +64,20 @@ const Footer = () => {
             <h3 className="text-2xl font-bold text-purple-400 mb-4">Quick Links</h3>
             <div className="w-16 h-0.5 bg-purple-400 mb-6"></div>
             <nav className="space-y-3">
-              {["Home", "Events", "Team", "Contact"].map((link) => (
+              {[
+                { label: "Home", href: "/" },
+                { label: "Events", href: "/events" },
+                { label: "Team", href: "/team" },
+                { label: "Contact", href: "/contact" },
+              ].map((item) => (
                 <motion.a
-                  key={link}
-                  href={`#${link.toLowerCase()}`}
+                  key={item.label}
+                  href={item.href}
                   className="block text-gray-300 hover:text-purple-400 transition-colors duration-200 text-sm"
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  {link}
+                  {item.label}
                 </motion.a>
               ))}
             </nav>

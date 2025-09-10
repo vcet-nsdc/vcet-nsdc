@@ -20,7 +20,7 @@ export default function Navbar() {
 
 				<ul className="hidden md:flex items-center gap-10 text-foreground">
 					<li>
-						<Link href="/home" className="hover:text-primary-light transition-colors">Home</Link>
+						<Link href="/" className="hover:text-primary-light transition-colors">Home</Link>
 					</li>
 					<li>
 						<Link href="/events" className="hover:text-primary-light transition-colors">Events</Link>

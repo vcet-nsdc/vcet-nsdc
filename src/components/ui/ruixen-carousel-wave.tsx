@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import gsap from 'gsap';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -60,7 +60,6 @@ const cards: RuixenCardProps[] = [
 export default function Slider_01() {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
 
   const shift = (direction: 'next' | 'prev') => {
     const nextIndex =
@@ -81,32 +80,33 @@ export default function Slider_01() {
         position -= cards.length;
       }
 
-      const x = position * 320;
-      const y = position === 0 ? 20 : 0;
+      const x = position * 380;
+      const y = position === 0 ? 24 : 0;
       const scale = position === 0 ? 1.03 : 0.95;
+      const opacity = position === 0 ? 1 : 0.75;
 
       if (Math.abs(position) > 2) {
-        gsap.set(card, { x, y, scale });
+        gsap.set(card, { x, y, scale, opacity });
       } else {
         gsap.to(card, {
           x,
           y,
           scale,
-          duration: 0.6,
-          ease: 'power2.out',
+          opacity,
+          duration: 0.85,
+          ease: 'power3.inOut',
         });
       }
     });
   }, [currentIndex]);
 
-  // Autoplay: advance every 3s, pause on hover
+  // Autoplay: advance every 1s (no pause on hover)
   useEffect(() => {
-    if (isPaused) return;
     const id = setInterval(() => {
       setCurrentIndex((idx) => (idx + 1) % cards.length);
-    }, 3000);
+    }, 1000);
     return () => clearInterval(id);
-  }, [isPaused]);
+  }, []);
 
   const badgeColors = {
     pink: 'bg-pink-600 text-white',
@@ -117,10 +117,8 @@ export default function Slider_01() {
   return (
     <div
       className="h-full w-full relative px-6 py-12 overflow-hidden"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="relative flex items-center justify-center h-[400px]">
+      <div className="relative flex items-center justify-center h-[460px]">
         {cards.map((card, index) => (
           <div
             key={index}
@@ -135,7 +133,7 @@ export default function Slider_01() {
                 className="relative block overflow-hidden rounded-2xl shadow-xl border border-zinc-200 dark:border-zinc-800 bg-gradient-to-tr from-white/50 to-zinc-100 dark:from-zinc-900/40 dark:to-zinc-800/30 backdrop-blur-md transition-all duration-300 hover:scale-[1.02]"
               >
                 {/* Image */}
-                <div className="relative h-[300px] w-[260px]">
+                <div className="relative h-[360px] w-[320px]">
                   <Image
                     src={card.image ?? ''}
                     alt={card.title ?? ''}
@@ -183,21 +181,7 @@ export default function Slider_01() {
         ))}
       </div>
 
-      {/* Arrows */}
-      <div className="absolute bottom-6 right-6 flex gap-2">
-        <button
-          onClick={() => shift('prev')}
-          className="p-2 rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 hover:scale-110 transition"
-        >
-          <ChevronLeft className="w-5 h-5 text-zinc-700 dark:text-white" />
-        </button>
-        <button
-          onClick={() => shift('next')}
-          className="p-2 rounded-full border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 hover:scale-110 transition"
-        >
-          <ChevronRight className="w-5 h-5 text-zinc-700 dark:text-white" />
-        </button>
-      </div>
+      {/* No manual arrows (auto-play only) */}
     </div>
   );
 }

@@ -61,7 +61,7 @@ export default function HeroSection() {
         <motion.blockquote
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.6, duration: 0.8 }}
+          transition={{ delay: 0.9, duration: 1 }}
           className="text-purple-400 text-lg italic mb-12 font-medium"
         >
           &quot;Data beats emotions.&quot;
