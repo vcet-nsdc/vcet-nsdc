@@ -1,5 +1,6 @@
 import React from 'react'
 import HeroSection from './Herosection'
+import Slider_01 from '@/components/ui/ruixen-carousel-wave'
 
 const home = () => {
   return (
@@ -126,6 +127,13 @@ const home = () => {
             <a href="/events" className="inline-block rounded-md bg-purple-500 hover:bg-purple-600 px-5 py-2 font-medium">Upcoming Events</a>
             <a href="/contact" className="inline-block rounded-md border border-white/20 hover:border-white/40 px-5 py-2 font-medium">Contact Us</a>
           </div>
+        </div>
+      </section>
+
+      {/* Image Slider */}
+      <section className="max-w-7xl mx-auto px-6 pb-24">
+        <div className="rounded-2xl border border-white/10 bg-black/30 backdrop-blur">
+          <Slider_01 />
         </div>
       </section>
     </div>
