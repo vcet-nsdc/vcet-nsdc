@@ -125,16 +125,16 @@ const EventCard: React.FC<EventCardProps> = ({
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-2 h-2 bg-violet-500 rounded-full" />
-                  <span className="text-slate-800 text-sm font-heading">{dateTime}</span>
+                  <span className="text-white text-sm font-heading">{dateTime}</span>
                 </div>
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-2 h-2 bg-slate-400 rounded-full" />
-                  <span className="text-slate-700 text-sm font-heading">{venue}</span>
+                  <span className="text-white text-sm font-heading">{venue}</span>
                 </div>
-                <p className="text-slate-700 text-xs leading-relaxed mb-4 font-body">{shortDescription}</p>
+                <p className="text-white text-xs leading-relaxed mb-4 font-body">{shortDescription}</p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2 attendee-icons">
-                    <span className="text-[11px] text-slate-600 font-body">Teams • Open to all</span>
+                    <span className="text-[11px] text-white font-body">Teams • Open to all</span>
                     <div className="bg-fuchsia-100 text-fuchsia-700 text-[10px] px-2 py-1 rounded-full font-heading border border-fuchsia-300">Awards: Trophy + Certificates</div>
                   </div>
                   <button
