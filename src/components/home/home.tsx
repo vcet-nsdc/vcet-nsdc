@@ -1,4 +1,7 @@
 import React from 'react'
+import Image from 'next/image'
+import Countdown from '@/components/ui/countdown'
+import eventImg from '@/components/events/upcoming/event-img.png'
 import HeroSection from './Herosection'
 // import MarqueeSlider from '@/components/ui/marquee-slider'
 
@@ -114,14 +117,35 @@ const home = () => {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Upcoming Event block (Landing only) */}
       <section className="max-w-7xl mx-auto px-6 pb-20">
-        <div className="rounded-2xl border border-slate-800/60 bg-gradient-to-r from-purple-600/20 to-blue-600/20 p-8 md:p-12 text-center">
-          <h3 className="text-2xl md:text-3xl font-bold mb-3">Ready to learn, build, and lead?</h3>
-          <p className="text-white/80 mb-6">Join our next event or collaborate with us on a project.</p>
-          <div className="flex items-center justify-center gap-4">
-            <a href="/events" className="inline-block rounded-md bg-purple-500 hover:bg-purple-600 px-5 py-2 font-medium">Upcoming Events</a>
-            <a href="/contact" className="inline-block rounded-md border border-white/20 hover:border-white/40 px-5 py-2 font-medium">Contact Us</a>
+        <div className="rounded-3xl border border-white/10 bg-black/30 backdrop-blur p-6 md:p-8">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h3 className="text-2xl md:text-3xl font-bold">Upcoming Event</h3>
+              <p className="text-white/70 text-sm">Don&apos;t miss our next session</p>
+            </div>
+            <a href="/events" className="text-sm text-purple-300 underline-offset-2 hover:underline">See all</a>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-6">
+            {/* Event preview card */}
+            <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-gradient-to-r from-purple-600/15 to-blue-600/15 p-4">
+              <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl ring-1 ring-white/10">
+                <Image src={eventImg} alt="Code-o-Fiesta" fill className="object-cover" />
+              </div>
+              <div className="min-w-0">
+                <div className="text-xs uppercase tracking-wide text-purple-300">Upcoming</div>
+                <div className="truncate text-lg font-semibold">Code‑o‑Fiesta</div>
+                <div className="truncate text-sm text-white/70">September 13, 2025 • 9:30 AM • VCET, Vasai</div>
+              </div>
+              <a href="/events" className="ml-auto rounded-md border border-white/15 px-3 py-1.5 text-sm hover:border-white/30">Details</a>
+            </div>
+
+            {/* Countdown */}
+            <div className="flex items-center justify-center">
+              <Countdown targetMonth={9} targetDay={13} />
+            </div>
           </div>
         </div>
       </section>
