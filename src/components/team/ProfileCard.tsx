@@ -116,7 +116,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
           <motion.img
             src={avatarUrl}
             alt={name}
-            className="w-full h-full object-cover transition duration-300 ease-out group-hover:brightness-[0.55]"
+            className="w-screen h-full object-cover transition duration-300 ease-out group-hover:brightness-[0.55]"
             loading="lazy"
             variants={imageVariants}
             initial="hidden"
