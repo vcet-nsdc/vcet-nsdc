@@ -12,7 +12,6 @@ import { HighlightsSection } from '@/components/sections/highlights-section';
 import { QuickLinksSection } from '@/components/sections/quick-links-section';
 import { CTASection } from '@/components/sections/cta-section';
 import { APP_CONFIG } from '@/lib/constants';
-import { PageTransition } from '@/components/ui/page-transition';
 
 // ============================================================================
 // METADATA
@@ -34,38 +33,36 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <PageTransition>
-      <main className="min-h-screen">
-        {/* Hero Section */}
-        <Suspense fallback={<div className="h-screen" />}>
-          <HeroSection />
-        </Suspense>
+    <main className="min-h-screen">
+      {/* Hero Section */}
+      <Suspense fallback={<div className="h-screen" />}>
+        <HeroSection />
+      </Suspense>
 
-        {/* About Section */}
-        <Suspense fallback={<div className="h-96" />}>
-          <AboutSection />
-        </Suspense>
+      {/* About Section */}
+      <Suspense fallback={<div className="h-96" />}>
+        <AboutSection />
+      </Suspense>
 
-        {/* Stats Section */}
-        <Suspense fallback={<div className="h-32" />}>
-          <StatsSection />
-        </Suspense>
+      {/* Stats Section */}
+      <Suspense fallback={<div className="h-32" />}>
+        <StatsSection />
+      </Suspense>
 
-        {/* Highlights Section */}
-        <Suspense fallback={<div className="h-96" />}>
-          <HighlightsSection />
-        </Suspense>
+      {/* Highlights Section */}
+      <Suspense fallback={<div className="h-96" />}>
+        <HighlightsSection />
+      </Suspense>
 
-        {/* Quick Links Section */}
-        <Suspense fallback={<div className="h-96" />}>
-          <QuickLinksSection />
-        </Suspense>
+      {/* Quick Links Section */}
+      <Suspense fallback={<div className="h-96" />}>
+        <QuickLinksSection />
+      </Suspense>
 
-        {/* CTA Section */}
-        <Suspense fallback={<div className="h-64" />}>
-          <CTASection />
-        </Suspense>
-      </main>
-    </PageTransition>
+      {/* CTA Section */}
+      <Suspense fallback={<div className="h-64" />}>
+        <CTASection />
+      </Suspense>
+    </main>
   );
 }
