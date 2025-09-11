@@ -21,7 +21,7 @@ export default function MarqueeSlider() {
   }, []);
 
   return (
-    <section className="image-slider" style={{ opacity: isReady ? 1 : 0, transition: "opacity .1s ease" }}>
+    <section className="image-slider" style={{ opacity: isReady ? 1 : 0, transition: "opacity .3s ease" }}>
       <div className="slider-track" style={{ animationPlayState: isReady ? 'running' : 'paused' }}>
         {duplicated.map((img, idx) => (
           <div className="slide" key={idx}>
