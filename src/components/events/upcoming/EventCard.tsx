@@ -77,13 +77,35 @@ const EventCard: React.FC<EventCardProps> = ({
     if (typeof document === 'undefined') return
 
     if (isModalOpen) {
+      // Store the current scroll position
+      const scrollY = window.scrollY
+      
+      // Get the scrollbar width before hiding it
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+      
+      // Add modal-open class and compensate for scrollbar width
       document.body.classList.add('modal-open')
+      document.body.style.paddingRight = `${scrollbarWidth}px`
+      document.body.style.top = `-${scrollY}px`
     } else {
+      // Get the scroll position from the body style
+      const scrollY = document.body.style.top
+      
+      // Remove modal-open class and reset styles
       document.body.classList.remove('modal-open')
+      document.body.style.paddingRight = ''
+      document.body.style.top = ''
+      
+      // Restore scroll position
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1)
+      }
     }
 
     return () => {
       document.body.classList.remove('modal-open')
+      document.body.style.paddingRight = ''
+      document.body.style.top = ''
     }
   }, [isModalOpen])
 

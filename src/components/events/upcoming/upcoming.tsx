@@ -183,7 +183,11 @@ const Upcoming: React.FC = () => {
         .hide-scrollbar::-webkit-scrollbar {
           display: none; /* Chrome, Safari, Edge */
         }
-        body.modal-open { overflow: hidden; }
+        body.modal-open { 
+          overflow: hidden; 
+          position: fixed;
+          width: 100%;
+        }
         ::-webkit-scrollbar {
           width: 8px;
         }
