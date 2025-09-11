@@ -1,6 +1,5 @@
 "use client"
 import React from 'react'
-import { motion } from 'framer-motion'
 import eventImg from './event-img.png' // Make sure this path is correct
 import EventCard from './EventCard'
 
@@ -14,30 +13,6 @@ const Upcoming: React.FC = () => {
   const scrollToTop = () => {
     if (typeof window !== 'undefined') {
       window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
-  }
-
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1
-    }
-  }
-
-  const itemVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1
-    }
-  }
-
-  const backgroundVariants = {
-    hidden: { opacity: 0, scale: 1.1 },
-    visible: {
-      opacity: 1,
-      scale: 1
     }
   }
 
@@ -87,89 +62,29 @@ const Upcoming: React.FC = () => {
   ]
 
   return (
-    <motion.div 
-      className="font-body min-h-screen flex justify-center items-center relative"
-      style={{
-        backgroundImage: `url(${eventImg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'fixed'
-      }}
-      variants={backgroundVariants}
-      initial="hidden"
-      animate="visible"
-      transition={{ duration: 1.2, ease: "easeOut" }}
-    >
-      {/* Background overlay for better text readability */}
-      <motion.div 
-        className="absolute inset-0 bg-black/40 backdrop-blur-sm"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-      ></motion.div>
-      
+    <div className="font-body min-h-screen flex justify-center items-center">
       {/* Removed overlayRef div */}
 
       {/* Removed Header Section */}
 
       {/* Removed Statistics Cards Section */}
 
-      <motion.div 
-        className="max-w-3xl mx-auto px-6 pt-20 pb-20 md:pt-40 relative z-10"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        transition={{ duration: 0.6, staggerChildren: 0.2 }}
-      >
-        <motion.div className="flex flex-col items-center gap-16">
+      <div className="max-w-3xl mx-auto px-6 pt-20 pb-20 md:pt-40">
+        <div className="flex flex-col items-center gap-16">
           {events.map((event, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-            >
-              <EventCard {...event} />
-            </motion.div>
+            <EventCard key={index} {...event} />
           ))}
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
       
 
-      <motion.div 
-        className="fixed bottom-8 right-8 z-50"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 1, duration: 0.5 }}
-      >
-        <motion.button 
-          className="bg-gradient-to-r from-violet-600 to-purple-600 text-white p-4 rounded-full shadow-lg"
-          onClick={scrollToTop} 
-          aria-label="Scroll to top"
-          whileHover={{ 
-            scale: 1.1, 
-            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" 
-          }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ duration: 0.2 }}
-        >
-          <motion.svg 
-            className="w-6 h-6" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
-            animate={{ y: [0, -2, 0] }}
-            transition={{ 
-              duration: 2, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
-            }}
-          >
+      <div className="fixed bottom-8 right-8 z-50">
+        <button className="bg-gradient-to-r from-violet-600 to-purple-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300" onClick={scrollToTop} aria-label="Scroll to top">
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-          </motion.svg>
-        </motion.button>
-      </motion.div>
+          </svg>
+        </button>
+      </div>
 
       {/* Removed Modal Section */}
 
@@ -183,11 +98,7 @@ const Upcoming: React.FC = () => {
         .hide-scrollbar::-webkit-scrollbar {
           display: none; /* Chrome, Safari, Edge */
         }
-        body.modal-open { 
-          overflow: hidden; 
-          position: fixed;
-          width: 100%;
-        }
+        body.modal-open { overflow: hidden; }
         ::-webkit-scrollbar {
           width: 8px;
         }
@@ -246,7 +157,7 @@ const Upcoming: React.FC = () => {
         /* Removed side-panel-gradient */
         /* Removed image-cover */
       `}</style>
-    </motion.div>
+    </div>
   )
 }
 
