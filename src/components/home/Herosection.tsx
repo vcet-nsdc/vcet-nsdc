@@ -16,7 +16,7 @@ export default function HeroSection() {
         <motion.div
           initial={{ scale: 0, rotate: -180 }}
           animate={{ scale: 1, rotate: 0 }}
-          transition={{ delay: 0.5, duration: 1, type: "spring", stiffness: 100 }}
+          transition={{ delay: 0.001, duration: 0.1, type: "spring", stiffness: 300 }}
           className="mb-8"
         >
           <Image
@@ -33,7 +33,7 @@ export default function HeroSection() {
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
+          transition={{ delay: 0.01, duration: 0.05, ease: "easeOut" }}
           className="mb-6 w-full"
         >
           <h1 className="text-4xl md:text-3xl lg:text-5xl font-bold text-white mb-4 leading-tight">
@@ -49,7 +49,7 @@ export default function HeroSection() {
         <motion.p
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
+          transition={{ delay: 0.05, duration: 0.05 }}
           className="text-lg md:text-xl text-white/80 mb-8 max-w-3xl mx-auto leading-relaxed text-pretty"
         >
           VCET&apos;s first Student Chapter for Data Visualization and Machine Learning
@@ -61,7 +61,7 @@ export default function HeroSection() {
         <motion.blockquote
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.6, duration: 0.8 }}
+          transition={{ delay: 0.05, duration: 0.02 }}
           className="text-purple-400 text-lg italic mb-12 font-medium"
         >
           &quot;Data beats emotions.&quot;
@@ -71,7 +71,7 @@ export default function HeroSection() {
          <motion.div
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 2, duration: 0.8 }}
+          transition={{ delay: 0.05, duration: 0.02 }}
           className="flex justify-center"
         >
           <Button className="flex items-center justify-center gap-2">
