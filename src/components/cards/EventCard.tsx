@@ -58,15 +58,21 @@ const EventCard: React.FC<EventCardProps> = ({
   const frameRef = useRef<number | null>(null)
   const [mounted, setMounted] = useState(false)
 
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const images = galleryImages && galleryImages.length > 0 ? galleryImages : defaultGallery
 
   const prettyDateTime = React.useMemo(() => {
     const format = (d: Date) =>
       new Intl.DateTimeFormat('en-GB', {
-        dateStyle: 'medium',
-        timeStyle: 'short',
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
         hour12: true,
-        
       }).format(d)
 
     if (dateTime) return dateTime
@@ -79,7 +85,14 @@ const EventCard: React.FC<EventCardProps> = ({
   const prettyDate = React.useMemo(() => {
     if (dateString) return dateString
     if (dateStart) {
-      try { return new Intl.DateTimeFormat('en-GB', { dateStyle: 'medium' }).format(new Date(dateStart)) } catch { return dateStart }
+      try { 
+        const date = new Date(dateStart)
+        return new Intl.DateTimeFormat('en-GB', { 
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric'
+        }).format(date)
+      } catch { return dateStart }
     }
     return ''
   }, [dateString, dateStart])
@@ -264,7 +277,7 @@ const EventCard: React.FC<EventCardProps> = ({
                       <rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" strokeWidth="1.8"/>
                       <path d="M16 3v4M8 3v4M3 9h18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
                     </svg>
-                    {prettyDate || prettyDateTime}
+                    {mounted ? (prettyDate || prettyDateTime) : 'Loading...'}
                   </span>
                   {prettyTime && (
                     <span className="px-2.5 py-1 rounded-md bg-gradient-to-r from-indigo-500 to-violet-600 text-white text-[11px] sm:text-xs font-heading shadow inline-flex items-center gap-1.5">
@@ -272,7 +285,7 @@ const EventCard: React.FC<EventCardProps> = ({
                         <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" opacity="0.9"/>
                         <path d="M12 7v5l3 3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
-                      {prettyTime}
+                      {mounted ? prettyTime : 'Loading...'}
                     </span>
                   )}
                   {venue && (
