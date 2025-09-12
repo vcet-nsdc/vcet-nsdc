@@ -9,7 +9,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-        fontFamily: {
+      fontFamily: {
        
         Dosis: ['"Dosis"', "sans-serif"], // ✅ Another custom font
         Manrope : ['"Manrope"', "sans-serif"], // ✅ Another custom font

@@ -4,17 +4,52 @@ import Image, { StaticImageData } from 'next/image'
 import eventImg from './event-img.png' // Make sure this path is correct
 import { AnimatePresence, motion } from 'framer-motion'
 import { LampContainer } from '@/components/ui/lamp' // Make sure this path is correct
+import { ImageMovingCards } from "@/components/ui/image-moving-cards";
 
-interface EventCardProps {
+export interface EventCardProps {
   title: string
-  dateTime: string
+  // either provide dateTime or dateStart/dateEnd
+  dateTime?: string
+  dateStart?: string
+  dateEnd?: string
+  dateString?: string
+  timeString?: string
   venue: string
   shortDescription: string
-  imagePath: string | StaticImageData
+  imagePath: StaticImageData | string
   overview: string
   highlights: string[]
+  itinerary: string[]
   awards: string[]
+  galleryImages?: { img: string; alt: string }[]
+  gallerySpeedSeconds?: number
 }
+const images = [
+  {
+    img: "/img/events/carousel-images/event-img.png",
+    alt: "Placeholder Image 1",
+  },
+  {
+    img: "https://via.placeholder.com/350x200?text=Image+2",
+    alt: "Placeholder Image 2",
+  },
+  {
+    img: "https://via.placeholder.com/350x200?text=Image+3",
+    alt: "Placeholder Image 3",
+  },
+  {
+    img: "https://via.placeholder.com/350x200?text=Image+4",
+    alt: "Placeholder Image 4",
+  },
+  {
+    img: "https://via.placeholder.com/350x200?text=Image+5",
+    alt: "Placeholder Image 5",
+  },
+  {
+    img: "https://via.placeholder.com/350x200?text=Image+6",
+    alt: "Placeholder Image 6",
+  },
+];
 
 const EventCard: React.FC<EventCardProps> = ({
   title,
@@ -24,6 +59,7 @@ const EventCard: React.FC<EventCardProps> = ({
   imagePath,
   overview,
   highlights,
+  itinerary,
   awards,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
@@ -97,7 +133,7 @@ const EventCard: React.FC<EventCardProps> = ({
 
             <div className="w-2/5 relative shimmer flex flex-col items-center justify-center p-6 floating-element rounded-l-3xl overflow-hidden">
               <Image
-                src={imagePath || eventImg}
+                src={typeof imagePath === "string" ? imagePath : imagePath.src}
                 alt={title}
                 fill
                 className="object-cover transition-transform duration-300 group-hover:scale-105 z-0"
@@ -119,7 +155,7 @@ const EventCard: React.FC<EventCardProps> = ({
 
             <div className="w-3/5 p-6 flex flex-col floating-element">
               <div className="relative mb-4 rounded-xl overflow-hidden group h-24">
-                <Image src={imagePath || eventImg} alt={title} fill className="object-cover transition-transform duration-300 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 50vw" priority />
+                <Image src={typeof imagePath === "string" ? imagePath : imagePath.src} alt={title} fill className="object-cover transition-transform duration-300 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 50vw" priority />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <div className="flex-1">
@@ -182,8 +218,8 @@ const EventCard: React.FC<EventCardProps> = ({
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
               </button>
-              <div 
-                className="w-full p-6 text-left" 
+              <div
+                className="w-full p-6 text-left"
                 style={{ backgroundColor: 'rgba(23, 10, 36, 0.7)', backdropFilter: 'blur(12px)' }}
               >
                 <div
@@ -222,6 +258,19 @@ const EventCard: React.FC<EventCardProps> = ({
                           <li key={index} className="text-fuchsia-100 text-sm font-body">{item}</li>
                         ))}
                       </ul>
+                    </div>
+                    <div>
+                      <p className="text-fuchsia-300 text-sm mb-1.5 font-body">Itinerary</p>
+                      <ul className="space-y-1 list-disc list-inside">
+                        {itinerary.map((item, index) => (
+                          <li key={index} className="text-fuchsia-100 text-sm font-body">{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="col-span-full mt-4">
+                      <div className="h-[20rem] flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+                        <ImageMovingCards items={images} direction="right" speed="slow" />
+                      </div>
                     </div>
                   </div>
                 </div>
