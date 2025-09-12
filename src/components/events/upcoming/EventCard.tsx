@@ -1,9 +1,7 @@
 "use client"
 import React, { useEffect, useRef, useState } from 'react'
 import Image, { StaticImageData } from 'next/image'
-import eventImg from './event-img.png' // Make sure this path is correct
 import { AnimatePresence, motion } from 'framer-motion'
-import { LampContainer } from '@/components/ui/lamp' // Make sure this path is correct
 import { ImageMovingCards } from "@/components/ui/image-moving-cards";
 
 export interface EventCardProps {
@@ -269,7 +267,7 @@ const EventCard: React.FC<EventCardProps> = ({
                     </div>
                     <div className="col-span-full mt-4">
                       <div className="h-[20rem] flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
-                        <ImageMovingCards items={images} direction="right" speed="slow" />
+                        <ImageMovingCards items={images} speedSeconds={35} />
                       </div>
                     </div>
                   </div>

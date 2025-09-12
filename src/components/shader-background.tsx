@@ -227,7 +227,7 @@ const ShaderBackground = () => {
         cancelAnimationFrame(animationFrameId);
       }
     };
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <canvas 

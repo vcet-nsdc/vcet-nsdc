@@ -63,8 +63,8 @@ const Past: React.FC = () => {
             const about = e.details?.about ?? e.about ?? ''
             const highlights = e.details?.highlights ?? e.highlights ?? []
             const galleryRaw = e.details?.gallery ?? e.gallery ?? []
-            const galleryImages = (galleryRaw as any[]).map((g: any, i: number) =>
-              typeof g === 'string' ? { img: g, alt: `${e.title} ${i + 1}` } : g
+            const galleryImages = (galleryRaw as unknown[]).map((g: unknown, i: number) =>
+              typeof g === 'string' ? { img: g, alt: `${e.title} ${i + 1}` } : g as { img: string; alt: string }
             )
             const dateTime = [e.date, e.time].filter(Boolean).join(' ')
             const shortDescription = e.description ?? ''

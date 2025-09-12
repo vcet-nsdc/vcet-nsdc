@@ -3,7 +3,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import Image, { StaticImageData } from 'next/image'
-import { AnimatePresence, motion } from 'framer-motion'
 import { ImageMovingCards } from '@/components/ui/image-moving-cards'
 
 export interface EventCardProps {
@@ -57,7 +56,6 @@ const EventCard: React.FC<EventCardProps> = ({
   const cardWrapperRef = useRef<HTMLDivElement | null>(null)
   const cardRef = useRef<HTMLDivElement | null>(null)
   const frameRef = useRef<number | null>(null)
-  const [modalPos, setModalPos] = useState<{ top: number; left: number; width: number } | null>(null)
   const [mounted, setMounted] = useState(false)
 
   const images = galleryImages && galleryImages.length > 0 ? galleryImages : defaultGallery
@@ -126,19 +124,7 @@ const EventCard: React.FC<EventCardProps> = ({
     setZoomedImage(imageSrc);
   }
 
-  const measureAndSetModalPos = () => {
-    // Anchor modal to the visual center of the card in viewport coordinates
-    const el = cardRef.current || cardWrapperRef.current
-    if (!el) return
-    const rect = el.getBoundingClientRect()
-    const centerX = rect.left + rect.width / 2
-    const centerY = rect.top + rect.height / 2
-    setModalPos({ top: centerY, left: centerX, width: rect.width })
-  }
-
-  const openModalAligned = () => {
-    // Measure and open immediately at the card's current center
-    measureAndSetModalPos()
+  const openModal = () => {
     setIsModalOpen(true)
   }
 
@@ -184,20 +170,6 @@ const EventCard: React.FC<EventCardProps> = ({
     }
   }, [])
 
-  // Compute modal position aligned to the card
-  useEffect(() => {
-    const updatePos = () => {
-      if (!isModalOpen) return
-      measureAndSetModalPos()
-    }
-    updatePos()
-    window.addEventListener('resize', updatePos)
-    window.addEventListener('scroll', updatePos, { passive: true })
-    return () => {
-      window.removeEventListener('resize', updatePos)
-      window.removeEventListener('scroll', updatePos)
-    }
-  }, [isModalOpen])
 
   useEffect(() => {
     if (typeof document === 'undefined') return
@@ -224,14 +196,14 @@ const EventCard: React.FC<EventCardProps> = ({
               onClick={() => {
                 const imageSrc = typeof imagePath === 'string' && imagePath
                   ? imagePath
-                  : (imagePath as any)?.src ?? '/event-img.png'
+                  : (imagePath as StaticImageData)?.src ?? '/event-img.png'
                 handleImageClick(imageSrc);
               }}
             >
               {(() => {
                 const imageSrc = typeof imagePath === 'string' && imagePath
                   ? imagePath
-                  : (imagePath as any)?.src ?? '/event-img.png'
+                  : (imagePath as StaticImageData)?.src ?? '/event-img.png'
                 return (
                   <Image
                     src={imageSrc}
@@ -264,14 +236,14 @@ const EventCard: React.FC<EventCardProps> = ({
                 onClick={() => {
                   const imageSrc = typeof imagePath === 'string' && imagePath
                     ? imagePath
-                    : (imagePath as any)?.src ?? '/event-img.png'
+                    : (imagePath as StaticImageData)?.src ?? '/event-img.png'
                   handleImageClick(imageSrc);
                 }}
               >
                 {(() => {
                   const imageSrc = typeof imagePath === 'string' && imagePath
                     ? imagePath
-                    : (imagePath as any)?.src ?? '/event-img.png'
+                    : (imagePath as StaticImageData)?.src ?? '/event-img.png'
                   return (
                     <Image
                       src={imageSrc}
@@ -320,7 +292,7 @@ const EventCard: React.FC<EventCardProps> = ({
                     <div />
                   )}
                   <button
-                    onClick={openModalAligned}
+                    onClick={openModal}
                     className="bg-gradient-to-r from-fuchsia-600 to-purple-700 text-white px-4 py-2 rounded-xl text-xs font-heading hover:shadow-lg hover:scale-105 transition-all duration-200 read-more-btn"
                     data-original="Read more"
                     aria-label="Read more"

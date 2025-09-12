@@ -1,13 +1,5 @@
-import Home from '@/components/home/home'
-import React from 'react'
+import { redirect } from 'next/navigation'
 
-const page = () => {
-  return (
-    <div>
-      
-      <Home/>
-    </div>
-  )
+export default function RootPage() {
+  redirect('/home')
 }
-
-export default page
