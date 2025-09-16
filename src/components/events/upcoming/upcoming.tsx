@@ -19,26 +19,7 @@ const Upcoming: React.FC = () => {
   // Removed useEffect hook as its functionality is no longer needed in Upcoming or moved to EventCard
   
   const events = [
-    {
-      title: "Code‑o‑Fiesta",
-      dateTime: "September 13, 2025 • 9:30 AM",
-      venue: "VCET, Vasai",
-      shortDescription: "A coding competition where participants build real-world software solutions and present them to judges.",
-      imagePath: eventImg,
-      overview: "Code-o-Fiesta is a dynamic coding event designed to challenge and enhance participants' problem-solving abilities while applying their skills to real-life scenarios. Prior to the event, teams receive problem statements focused on developing innovative software or product solutions with practical applications. On the event day, participants showcase their completed projects to a panel of judges, making this competition both a test of technical expertise and a platform for meaningful innovation.",
-      highlights: [
-        "Pre-event problem statements focusing on real-world challenges.",
-        "Teams build complete software/products before the event day.",
-        "Initial Presentation Round: Teams present their developed products to judges.",
-        "Evaluation Round: Judges assess solutions on functionality, creativity, execution, and relevance.",
-        "A platform to apply coding skills beyond theory, fostering innovation and teamwork.",
-      ],
-      awards: [
-        "Prizes and recognition for top-performing teams.",
-        "Certificates for participants and winners.",
-        "Potential opportunities for projects to gain further mentorship or exposure.",
-      ],
-    },
+    
     {
       title: "TechX Product Showcase 2025",
       dateTime: "September 19, 2025 • 10:00 AM",

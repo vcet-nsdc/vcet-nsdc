@@ -1,9 +1,13 @@
 import React from 'react'
 import Upcoming from './upcoming/upcoming'
+import PastEvents from './past/PastEvents'
 
 const Events = () => {
   return (
-    <Upcoming />
+    <div className="space-y-16">
+      <Upcoming />
+      <PastEvents />
+    </div>
   )
 }
 

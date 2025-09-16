@@ -38,6 +38,7 @@ export interface Event {
   readonly awards: readonly string[];
   readonly status: 'upcoming' | 'ongoing' | 'past';
   readonly category: 'competition' | 'workshop' | 'showcase' | 'meeting';
+  readonly link?: string;
 }
 
 export interface EventCardProps {

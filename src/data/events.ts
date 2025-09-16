@@ -4,6 +4,7 @@
  */
 
 import type { Event } from '@/types';
+import pasteventsdata from '../../public/staticdata/pasteventsdata.json';
 
 // ============================================================================
 // EVENT DATA
@@ -93,10 +94,48 @@ export function getUpcomingEvents(): Event[] {
 }
 
 /**
+ * Transform past events data from JSON to Event interface
+ */
+type PastEventJson = {
+  id: string;
+  title: string;
+  date: string;
+  time: string;
+  description: string;
+  about?: string;
+  highlights?: string[];
+  link?: string;
+};
+
+function transformPastEventsData(): Event[] {
+  return pasteventsdata.events.map((event: PastEventJson) => {
+    const baseEvent = {
+      id: event.id,
+      title: event.title,
+      dateTime: `${event.date} • ${event.time}`,
+      venue: 'VCET, Vasai',
+      shortDescription: event.description,
+      imagePath: '/public/assests/image.png', // Default image
+      overview: event.about || event.description,
+      highlights: event.highlights || [],
+      awards: [],
+      status: 'past' as const,
+      category: 'competition' as const, // Default category
+    };
+    return event.link
+      ? { ...baseEvent, link: event.link }
+      : baseEvent;
+  }) as Event[];
+}
+
+/**
  * Get past events (sorted by date, most recent first)
  */
 export function getPastEvents(): Event[] {
-  return [...getEventsByStatus('past')].sort((a: Event, b: Event) => 
+  const pastEventsFromData = [...getEventsByStatus('past')];
+  const pastEventsFromJSON = transformPastEventsData();
+  
+  return [...pastEventsFromData, ...pastEventsFromJSON].sort((a: Event, b: Event) => 
     new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime()
   );
 }
