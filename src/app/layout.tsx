@@ -11,6 +11,7 @@ import { Footer } from '@/components/layout/footer';
 import ShaderBackground from '@/components/shader-background';
 import { APP_CONFIG } from '@/lib/constants';
 import './globals.css';
+import SocialSidebar from '@/components/socialsidebar';
 
 // ============================================================================
 // FONT CONFIGURATION
@@ -143,6 +144,7 @@ export default function RootLayout({
           <div className="flex-1 relative">
             <ShaderBackground />
             <div className="relative z-10">
+              <SocialSidebar />
               {children}
             </div>
           </div>
