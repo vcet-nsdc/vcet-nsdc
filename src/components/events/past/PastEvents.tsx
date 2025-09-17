@@ -63,7 +63,30 @@ export function PastEventsSection({ events }: PastEventsSectionProps) {
         "Questions covering programming, algorithms, and emerging tech",
         "Prizes for top performers and certificates for all participants"
       ],
-      gallery: [],
+      gallery: ["https://ik.imagekit.io/nsdc2025vcet/events/TechBlitz/TechBlitz_img_6.webp?updatedAt=1758099877404",
+       " https://ik.imagekit.io/nsdc2025vcet/events/TechBlitz/TechBlitz_img_7.webp?updatedAt=1758099876888",
+"https://ik.imagekit.io/nsdc2025vcet/events/TechBlitz/TechBlitz_img_9.webp?updatedAt=1758099876544",
+"https://ik.imagekit.io/nsdc2025vcet/events/TechBlitz/TechBlitz_img_5.webp?updatedAt=1758099874879",
+"https://ik.imagekit.io/nsdc2025vcet/events/TechBlitz/TechBlitz_img_4.webp?updatedAt=1758099873658",
+"https://ik.imagekit.io/nsdc2025vcet/events/TechBlitz/TechBlitz_img_20.webp?updatedAt=1758099872859",
+"https://ik.imagekit.io/nsdc2025vcet/events/TechBlitz/TechBlitz_img_19.webp?updatedAt=1758099872830",
+"https://ik.imagekit.io/nsdc2025vcet/events/TechBlitz/TechBlitz_img_17.webp?updatedAt=1758099872767",
+"https://ik.imagekit.io/nsdc2025vcet/events/TechBlitz/TechBlitz_img_3.webp?updatedAt=1758099872719",
+"https://ik.imagekit.io/nsdc2025vcet/events/TechBlitz/TechBlitz_img_18.webp?updatedAt=1758099872582",
+"https://ik.imagekit.io/nsdc2025vcet/events/TechBlitz/TechBlitz_img_2.webp?updatedAt=1758099872371",
+"https://ik.imagekit.io/nsdc2025vcet/events/TechBlitz/TechBlitz_img_16.webp?updatedAt=1758099872022",
+"https://ik.imagekit.io/nsdc2025vcet/events/TechBlitz/TechBlitz_img_15.webp?updatedAt=1758099871568",
+"https://ik.imagekit.io/nsdc2025vcet/events/TechBlitz/TechBlitz_img_14.webp?updatedAt=1758099870107",
+"https://ik.imagekit.io/nsdc2025vcet/events/TechBlitz/TechBlitz_img_13.webp?updatedAt=1758099868542",
+"https://ik.imagekit.io/nsdc2025vcet/events/TechBlitz/TechBlitz_img_12.webp?updatedAt=1758099867683",
+"https://ik.imagekit.io/nsdc2025vcet/events/TechBlitz/TechBlitz_img_10.webp?updatedAt=1758099867451",
+"https://ik.imagekit.io/nsdc2025vcet/events/TechBlitz/Techblitz_Img_1.webp?updatedAt=1758099867401",
+"https://ik.imagekit.io/nsdc2025vcet/events/TechBlitz/TechBlitz_img_11.webp?updatedAt=1758099867393",
+"https://ik.imagekit.io/nsdc2025vcet/events/TechBlitz/TechBlitz_1.webp?updatedAt=1758099867297"
+
+
+],
+      
       link: "https://techblitz2025.netlify.app/"
     },
     {
@@ -104,7 +127,12 @@ export function PastEventsSection({ events }: PastEventsSectionProps) {
         "Traditional lamp lighting ceremony and Saraswati Vandana",
         "Certificates awarded to all participants"
       ],
-      gallery: [],
+      gallery: [
+       " https://ik.imagekit.io/nsdc2025vcet/events/codeOfista/codeofista4.webp?updatedAt=1758099886744",
+"https://ik.imagekit.io/nsdc2025vcet/events/codeOfista/codeofista3.webp?updatedAt=1758099885719",
+"https://ik.imagekit.io/nsdc2025vcet/events/codeOfista/codeofista2.webp?updatedAt=1758099884816",
+"https://ik.imagekit.io/nsdc2025vcet/events/codeOfista/codeofista1.webp?updatedAt=1758099884452"
+      ],
       link: "https://vcet-nsdc.vercel.app/Codeofiesta"
     },
     {
@@ -146,7 +174,17 @@ export function PastEventsSection({ events }: PastEventsSectionProps) {
         "Real-time video analytics capabilities",
         "Edge computing applications and use cases"
       ],
-      gallery: [],
+      gallery: [
+        "https://ik.imagekit.io/nsdc2025vcet/events/nvidia/nvidia_7.webp?updatedAt=1758099902097",
+ "https://ik.imagekit.io/nsdc2025vcet/events/nvidia/nvidia_4.webp?updatedAt=1758099902019",
+"https://ik.imagekit.io/nsdc2025vcet/events/nvidia/nvidia_6.webp?updatedAt=1758099901824",
+"https://ik.imagekit.io/nsdc2025vcet/events/nvidia/nvidia_5.webp?updatedAt=1758099901753",
+"https://ik.imagekit.io/nsdc2025vcet/events/nvidia/nvidia_2.webp?updatedAt=1758099900161",
+"https://ik.imagekit.io/nsdc2025vcet/events/nvidia/nvidia_3.webp?updatedAt=1758099899854",
+"https://ik.imagekit.io/nsdc2025vcet/events/nvidia/nvidia_1.webp?updatedAt=1758099899769"
+
+
+      ],
       link: "https://techblitz2025.netlify.app/"
     },
     {
@@ -166,7 +204,15 @@ export function PastEventsSection({ events }: PastEventsSectionProps) {
         "Projects in predictive analytics, AI in healthcare, energy optimization",
         "Autonomous robotics, image recognition, and human-machine interaction"
       ],
-      gallery: [],
+      gallery: ["https://ik.imagekit.io/nsdc2025vcet/events/products24/128.webp?updatedAt=1758099867393",
+"https://ik.imagekit.io/nsdc2025vcet/events/products24/127.webp?updatedAt=1758099867004",
+"https://ik.imagekit.io/nsdc2025vcet/events/products24/126.webp?updatedAt=1758099866829",
+"https://ik.imagekit.io/nsdc2025vcet/events/products24/125.webp?updatedAt=1758099865197",
+"https://ik.imagekit.io/nsdc2025vcet/events/products24/122.webp?updatedAt=1758099862759",
+"https://ik.imagekit.io/nsdc2025vcet/events/products24/123.webp?updatedAt=1758099861904",
+"https://ik.imagekit.io/nsdc2025vcet/events/products24/124.webp?updatedAt=1758099862370",
+"https://ik.imagekit.io/nsdc2025vcet/events/products24/121.webp?updatedAt=1758099862559"
+],
       link: "https://vcet-nsdc.vercel.app/nvidia"
     },
     {
@@ -187,7 +233,18 @@ export function PastEventsSection({ events }: PastEventsSectionProps) {
         "Indigenous Knowledge Systems (IKS) integration with modern engineering and sciences",
         "Judging Criteria: Originality, technical content, presentation skills"
       ],
-      gallery: [],
+      gallery: [
+        "https://ik.imagekit.io/nsdc2025vcet/events/oscillation/osc1.webp?updatedAt=1758099851354",
+"https://ik.imagekit.io/nsdc2025vcet/events/oscillation/osc5.webp?updatedAt=1758099851329",
+"https://ik.imagekit.io/nsdc2025vcet/events/oscillation/osc8.webp?updatedAt=1758099851287",
+"https://ik.imagekit.io/nsdc2025vcet/events/oscillation/osc3.webp?updatedAt=1758099851288",
+"https://ik.imagekit.io/nsdc2025vcet/events/oscillation/osc2.webp?updatedAt=1758099851224",
+"https://ik.imagekit.io/nsdc2025vcet/events/oscillation/osc4.webp?updatedAt=1758099851113",
+"https://ik.imagekit.io/nsdc2025vcet/events/oscillation/osc9.webp?updatedAt=1758099851155",
+"https://ik.imagekit.io/nsdc2025vcet/events/oscillation/osc10.webp?updatedAt=1758099851007",
+"https://ik.imagekit.io/nsdc2025vcet/events/oscillation/osc7.webp?updatedAt=1758099851009",
+"https://ik.imagekit.io/nsdc2025vcet/events/oscillation/osc6.webp?updatedAt=1758099851032"
+      ],
       link: "https://vcet-nsdc.vercel.app/vnps"
     },
     {
@@ -226,7 +283,13 @@ export function PastEventsSection({ events }: PastEventsSectionProps) {
         "Q&A on tools, trends, and career scope",
         "Encouraged exploration of data-driven projects and certifications"
       ],
-      gallery: [],
+      gallery: [ "https://ik.imagekit.io/nsdc2025vcet/events/PowerBI/powerbi_img_5.webp?updatedAt=1758099857412",
+"https://ik.imagekit.io/nsdc2025vcet/events/PowerBI/powerbi_img_4.webp?updatedAt=1758099857205",
+"https://ik.imagekit.io/nsdc2025vcet/events/PowerBI/powerbi_img_2.webp?updatedAt=1758099856856",
+"https://ik.imagekit.io/nsdc2025vcet/events/PowerBI/powerbi_img_3.webp?updatedAt=1758099856546",
+"https://ik.imagekit.io/nsdc2025vcet/events/PowerBI/powerbi_img_0.webp?updatedAt=1758099855857",
+"https://ik.imagekit.io/nsdc2025vcet/events/PowerBI/powerbi_img_1.webp?updatedAt=1758099855548"
+],
       link: "#"
     },
     {
@@ -246,7 +309,19 @@ export function PastEventsSection({ events }: PastEventsSectionProps) {
         "Demonstrated commitment to cutting-edge technology",
         "Platform for students to showcase expertise and innovation"
       ],
-      gallery: [],
+      gallery: [
+        "https://ik.imagekit.io/nsdc2025vcet/events/products/product_9.webp?updatedAt=1758099862435",
+"https://ik.imagekit.io/nsdc2025vcet/events/products/product_7.webp?updatedAt=1758099862354",
+"https://ik.imagekit.io/nsdc2025vcet/events/products/product_8.webp?updatedAt=1758099862325",
+"https://ik.imagekit.io/nsdc2025vcet/events/products/product_6.webp?updatedAt=1758099862034",
+"https://ik.imagekit.io/nsdc2025vcet/events/products/product_5.webp?updatedAt=1758099861035",
+"https://ik.imagekit.io/nsdc2025vcet/events/products/product_4.webp?updatedAt=1758099859991",
+"https://ik.imagekit.io/nsdc2025vcet/events/products/product_1.mov/ik-video.mp4?updatedAt=1758099857130",
+"https://ik.imagekit.io/nsdc2025vcet/events/products/product_2.webp?updatedAt=1758099857050",
+"https://ik.imagekit.io/nsdc2025vcet/events/products/product_3.webp?updatedAt=1758099856700",
+"https://ik.imagekit.io/nsdc2025vcet/events/products/product_10.webp?updatedAt=1758099856710"
+
+      ],
       link: "https://vcet-nsdc.vercel.app/powerbi"
     },
     {
@@ -266,7 +341,14 @@ export function PastEventsSection({ events }: PastEventsSectionProps) {
         "Covers AI, data science, and broader technical topics",
         "Commenced an enriching journey into innovation"
       ],
-      gallery: [],
+      gallery: [
+               "https://ik.imagekit.io/nsdc2025vcet/events/TechZette/TechZette_5.webp?updatedAt=1758099878375",
+"https://ik.imagekit.io/nsdc2025vcet/events/TechZette/TechZette_2.webp?updatedAt=1758099878308",
+"https://ik.imagekit.io/nsdc2025vcet/events/TechZette/TechZette_3.webp?updatedAt=1758099877592",
+"https://ik.imagekit.io/nsdc2025vcet/events/TechZette/TechZette_4.webp?updatedAt=1758099877287"
+
+
+      ],
       link: "https://vcet-nsdc.vercel.app/product"
     },
     {
@@ -286,7 +368,18 @@ export function PastEventsSection({ events }: PastEventsSectionProps) {
         "New era of collaboration and exploration in data science",
         "Journey to leverage data-driven insights for societal betterment"
       ],
-      gallery: [],
+      gallery: [
+        "https://ik.imagekit.io/nsdc2025vcet/events/inaugration/inaug_9.webp?updatedAt=1758099890901",
+"https://ik.imagekit.io/nsdc2025vcet/events/inaugration/inaug_8.webp?updatedAt=1758099890514",
+"https://ik.imagekit.io/nsdc2025vcet/events/inaugration/inaug_7.webp?updatedAt=1758099890235",
+"https://ik.imagekit.io/nsdc2025vcet/events/inaugration/inaug_6.webp?updatedAt=1758099889333",
+"https://ik.imagekit.io/nsdc2025vcet/events/inaugration/inaug_5.webp?updatedAt=1758099889134",
+"https://ik.imagekit.io/nsdc2025vcet/events/inaugration/inaug_4.webp?updatedAt=1758099887890",
+"https://ik.imagekit.io/nsdc2025vcet/events/inaugration/inaug_3.webp?updatedAt=1758099887645",
+"https://ik.imagekit.io/nsdc2025vcet/events/inaugration/inaug_2.webp?updatedAt=1758099887269",
+"https://ik.imagekit.io/nsdc2025vcet/events/inaugration/inaug_10.webp?updatedAt=1758099887089"
+
+      ],
       link: "https://vcet-nsdc.vercel.app/techzette"
     }
   ]
