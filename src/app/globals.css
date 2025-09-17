@@ -158,3 +158,58 @@ h1, h2, h3, h4, h5, h6 {
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom scrollbar styles for modals */
+.modal-scroll {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.modal-scroll::-webkit-scrollbar {
+  display: none; /* WebKit */
+}
+
+/* Ensure modal content can scroll */
+.modal-content {
+  max-height: 90vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+}
+
+.modal-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Fix for modal scrolling issues */
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal-content-wrapper {
+  max-height: 90vh;
+  width: 100%;
+  max-width: 56rem; /* max-w-4xl */
+  overflow: hidden;
+}
+
+.modal-content-inner {
+  max-height: 90vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.modal-content-inner::-webkit-scrollbar {
+  display: none;
+}

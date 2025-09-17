@@ -17,7 +17,7 @@ export const events: readonly Event[] = [
     dateTime: 'September 13, 2025 • 9:30 AM',
     venue: 'VCET, Vasai',
     shortDescription: 'A coding competition where participants build real-world software solutions and present them to judges.',
-    imagePath: '/components/events/upcoming/event-img.png',
+    imagePath: '/assests/image.png',
     overview: 'Code-o-Fiesta is a dynamic coding event designed to challenge and enhance participants\' problem-solving abilities while applying their skills to real-life scenarios. Prior to the event, teams receive problem statements focused on developing innovative software or product solutions with practical applications. On the event day, participants showcase their completed projects to a panel of judges, making this competition both a test of technical expertise and a platform for meaningful innovation.',
     highlights: [
       'Pre-event problem statements focusing on real-world challenges.',
@@ -40,7 +40,7 @@ export const events: readonly Event[] = [
     dateTime: 'September 19, 2025 • 10:00 AM',
     venue: 'Labs 114 & 115, VCET, Vasai',
     shortDescription: 'A one-day product showcase highlighting cutting-edge technologies, bridging academic learning with industry exposure.',
-    imagePath: '/components/events/upcoming/event-img.png',
+    imagePath: '/assests/image.png',
     overview: 'TechX 2025 was a one-day Product Showcase event organized by the Department of Artificial Intelligence and Data Science at VCET on September 19, 2025. Guided by faculty coordinators Prof. Sejal Dmello, Prof. Bhavika Gharat, and Prof. Neha Raut, the event aimed to bridge academic learning with industry exposure.\n\nThe event brought together 35 students across 17 teams to exhibit projects infused with technical ingenuity and creative flair. Inaugurated by Principal Mr. Harish Vankudre and Dean of Academic Affairs Mr. Vikas Gupta, TechX emphasized the institution\'s commitment to innovation and collaboration. Industry partners like Edba Academy, Tech Cryptors, and DataMango showcased products including advanced drones, high-performance GPUs, and blockchain-based tools.\n\nThrough hands-on engagement, students enhanced their technical expertise, presentation skills, and professional communication, while also fostering holistic personal and professional growth.',
     highlights: [
       'Organized by the Department of Artificial Intelligence and Data Science, VCET.',
@@ -115,7 +115,7 @@ function transformPastEventsData(): Event[] {
       dateTime: `${event.date} • ${event.time}`,
       venue: 'VCET, Vasai',
       shortDescription: event.description,
-      imagePath: '/public/assests/image.png', // Default image
+      imagePath: '/assests/image.png', // Default image
       overview: event.about || event.description,
       highlights: event.highlights || [],
       awards: [],

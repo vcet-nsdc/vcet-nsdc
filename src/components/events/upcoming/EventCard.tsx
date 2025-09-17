@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useRef, useState } from 'react'
 import Image, { StaticImageData } from 'next/image'
-import eventImg from './event-img.png' // Make sure this path is correct
+// import eventImg from './event-img.png' // Make sure this path is correct
 import { AnimatePresence, motion } from 'framer-motion'
 
 interface EventCardProps {
@@ -96,7 +96,7 @@ const EventCard: React.FC<EventCardProps> = ({
 
             <div className="w-2/5 relative shimmer flex flex-col items-center justify-center p-6 floating-element rounded-l-3xl overflow-hidden">
               <Image
-                src={imagePath || eventImg}
+                src={imagePath || '/assests/image.png'}
                 alt={title}
                 fill
                 className="object-cover transition-transform duration-300 group-hover:scale-105 z-0"
@@ -118,7 +118,7 @@ const EventCard: React.FC<EventCardProps> = ({
 
             <div className="w-3/5 p-6 flex flex-col floating-element">
               <div className="relative mb-4 rounded-xl overflow-hidden group h-24">
-                <Image src={imagePath || eventImg} alt={title} fill className="object-cover transition-transform duration-300 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 50vw" priority />
+                <Image src={imagePath || '/assests/image.png'} alt={title} fill className="object-cover transition-transform duration-300 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 50vw" priority />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <div className="flex-1">
@@ -182,15 +182,12 @@ const EventCard: React.FC<EventCardProps> = ({
                 </svg>
               </button>
               <div 
-                className="w-full p-6 text-left" 
+                className="w-full p-6 text-left modal-content" 
                 style={{ backgroundColor: 'rgba(23, 10, 36, 0.7)', backdropFilter: 'blur(12px)' }}
               >
-                <div
-                  className="overflow-y-auto max-h-[70vh] hide-scrollbar"
-                >
-                  <h3 className="text-fuchsia-100 text-lg font-heading mb-4">
-                    {title} — Event Details
-                  </h3>
+                <h3 className="text-fuchsia-100 text-lg font-heading mb-4">
+                  {title} — Event Details
+                </h3>
                   <div className="grid sm:grid-cols-2 gap-4 text-sm text-fuchsia-200 mb-4">
                     <div className="space-y-1">
                       <p className="text-fuchsia-300 font-body">Date & Time</p>
@@ -224,7 +221,6 @@ const EventCard: React.FC<EventCardProps> = ({
                     </div>
                   </div>
                 </div>
-              </div>
             </motion.div>
           </div>
         )}

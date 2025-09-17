@@ -1,37 +1,335 @@
 "use client"
-import React from 'react'
-import { getPastEvents } from '@/data/events'
-import PastEventCard from './PastEventCard'
 
-const PastEvents: React.FC = () => {
-  const pastEvents = getPastEvents()
+import { motion } from "framer-motion"
+import { useState } from "react"
+import { EventCard } from "./EventCard"
+import { EventModal } from "./eventmodal"
 
-  if (pastEvents.length === 0) {
-    return (
-      <div className="text-center py-12">
-        <h3 className="text-xl font-semibold text-white mb-2">No past events found</h3>
-        <p className="text-white/70">Check back later for past events!</p>
-      </div>
-    )
-  }
-
-  return (
-    <div className="max-w-6xl mx-auto space-y-8 relative z-10">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold text-white mb-4">Past Events</h2>
-        <p className="text-white/70 text-lg">Explore our previous events and achievements</p>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {pastEvents.map((event) => (
-          <PastEventCard 
-            key={event.id}
-            event={event}
-          />
-        ))}
-      </div>
-    </div>
-  )
+interface Event {
+  id: string
+  title: string
+  year: string
+  date: string
+  time: string
+  venue: string
+  description: string
+  about: string
+  highlights: string[]
+  gallery: string[]
+  link: string
 }
 
-export default PastEvents
+interface PastEventsSectionProps {
+  events: Event[]
+}
+
+export function PastEventsSection({ events }: PastEventsSectionProps) {
+  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null)
+
+  const sampleEvents: Event[] = [
+    {
+      id: "event_000",
+      title: "Code-o-Fiesta",
+      year: "2025-26",
+      date: "2025-09-13",
+      time: "9:30 AM – 5:00 PM",
+      venue: "VCET, Vasai",
+      description: "A coding competition where participants build real-world software solutions and present them to judges.",
+      about: "Code-o-Fiesta is a dynamic coding event designed to challenge and enhance participants' problem-solving abilities while applying their skills to real-life scenarios. Prior to the event, teams receive problem statements focused on developing innovative software or product solutions with practical applications. On the event day, participants showcase their completed projects to a panel of judges, making this competition both a test of technical expertise and a platform for meaningful innovation.",
+      highlights: [
+        "Pre-event problem statements focusing on real-world challenges.",
+        "Teams build complete software/products before the event day.",
+        "Initial Presentation Round: Teams present their developed products to judges.",
+        "Evaluation Round: Judges assess solutions on functionality, creativity, execution, and relevance.",
+        "A platform to apply coding skills beyond theory, fostering innovation and teamwork."
+      ],
+      gallery: [],
+      link: "https://vcet-nsdc.vercel.app/code-o-fiesta"
+    },
+
+    {
+      id: "event_001",
+      title: "Techblitz",
+      year: "2024-25",
+      date: "2025-02-25",
+      time: "10:00 AM – 1:00 PM",
+      venue: "VCET, Vasai",
+      description: "Techtrivia Challenge 2025 – Showcase your technical knowledge and win exciting prizes.",
+      about: "TechBlitz 2025 was an exciting technical trivia challenge that tested participants' knowledge across various domains of technology. The event featured questions covering programming languages, algorithms, data structures, web development, mobile development, and emerging technologies. Participants competed individually and in teams, showcasing their technical expertise and quick thinking abilities.",
+      highlights: [
+        "Comprehensive technical trivia covering multiple domains",
+        "Individual and team competition formats",
+        "Real-time scoring and leaderboard updates",
+        "Questions covering programming, algorithms, and emerging tech",
+        "Prizes for top performers and certificates for all participants"
+      ],
+      gallery: [],
+      link: "https://techblitz2025.netlify.app/"
+    },
+    {
+      id: "event_002",
+      title: "TechX",
+      year: "2024-25",
+      date: "2025-03-14",
+      time: "2:00 PM – 5:00 PM",
+      venue: "Labs 114 & 115, VCET, Vasai",
+      description: "TechX – Technical Showcase. Participate and present your innovative technical projects.",
+      about: "TechX 2024, a one-day Product Showcase event organized by the Department of Artificial Intelligence and Data Science, was held on September 27, 2024, in Labs 114 and 115. Guided by faculty coordinators Prof. Sejal Dmello, Prof. Bhavika Gharat, and Prof. Neha Raut, the event aimed to bridge academic learning with industry exposure. With an emphasis on innovation and collaboration, students from diverse backgrounds converged to present their projects, each reflecting a blend of technical ingenuity and creative flair. The event was inaugurated by VCET's esteemed Principal, Mr. Harish Vankudre, and the Dean of Academic Affairs, Mr. Vikas Gupta, underscoring the institution's commitment to fostering technological excellence.",
+      highlights: [
+        "Showcased innovative products from leading companies",
+        "Industry participation from Edba Academy, Tech Cryptors, DataMango, Zaplet, VM Protect, and Cosmic Spirit",
+        "Products included cutting-edge technologies like DJI AIR3S drone",
+        "Advanced graphics cards (3090 & 3080) and wireless video transmission systems",
+        "Blockchain-based inventory management tools",
+        "Enhanced students' technical expertise, presentation skills, and professional communication",
+        "Promoted collaboration and holistic growth"
+      ],
+      gallery: [],
+      link: "https://vcet-nsdc.vercel.app/productshowcase24"
+    },
+    {
+      id: "event_003",
+      title: "Code o Fiesta",
+      year: "2024-25",
+      date: "2025-03-17",
+      time: "11:00 AM – 3:00 PM",
+      venue: "VCET, Vasai",
+      description: "Coding competition – Solve challenges and showcase your programming skills.",
+      about: "Code-O-Fiesta 2024 was held on 20th September at Vidyavardhini's College of Engineering and Technology, organized by the departments of Artificial Intelligence and Data Science & Computer Science Engineering (Data Science). The event was graced by dignitaries including the chief guest, Mr. Ajit Kumar Singh, along with the principal, Dr. Rakesh Himte, and other faculty heads. The inauguration featured a traditional lamp lighting ceremony, the 'Saraswati Vandana' prayer, and speeches from the guests, emphasizing the importance of such events in fostering innovation and talent in technology.",
+      highlights: [
+        "Keynote emphasized the importance of Code-O-Fiesta",
+        "Participants split into Healthcare and Agriculture domains",
+        "Jury round showcased ideas and algorithmic approaches",
+        "Final round featured live demos before judges and audience",
+        "Traditional lamp lighting ceremony and Saraswati Vandana",
+        "Certificates awarded to all participants"
+      ],
+      gallery: [],
+      link: "https://vcet-nsdc.vercel.app/Codeofiesta"
+    },
+    {
+      id: "event_004",
+      title: "Logo Making Competition",
+      year: "2024-25",
+      date: "2025-03-20",
+      time: "9:30 AM – 12:30 PM",
+      venue: "VCET, Vasai",
+      description: "Design unique logos showcasing creativity and innovation.",
+      about: "On September 3rd, 2024, a creative and engaging Logo Making Competition was organized as part of the ICE3T event. The competition centered around the College Paper Publication theme, with participants tasked to design logos that represented the diverse domains outlined on the ICE3T website. These domains ranged from cutting-edge technologies like Data Science, Cloud Computing, and IoT to traditional fields such as Civil Engineering and Indigenous Knowledge Systems, reflecting the broad spectrum of research areas.",
+      highlights: [
+        "Organized as part of the ICE3T event on September 3rd, 2024",
+        "Focused on the theme College Paper Publication",
+        "Participants designed logos representing diverse domains",
+        "Domains included Data Science, Cloud Computing, IoT, Civil Engineering, and Indigenous Knowledge Systems",
+        "Three-hour competition for ideation, sketching, and refining",
+        "Judging criteria: creativity, relevance, visual appeal, and effective communication",
+        "Highlighted artistic innovation and technical understanding in logo design",
+        "One outstanding design selected as the winner"
+      ],
+      gallery: [],
+      link: "https://vcet-nsdc.vercel.app/logo"
+    },
+    {
+      id: "event_005",
+      title: "Seminar on NVIDIA Jetson AI Device",
+      year: "2024-25",
+      date: "2025-02-25",
+      time: "10:00 AM – 12:00 PM",
+      venue: "VCET, Vasai",
+      description: "The seminar on NVIDIA Jetson AI Edge Device organized by our college is held on 30th August 2024 in association with IETE. Mr. Anil Sarode explained the working and functioning of NVIDIA jetson devices.",
+      about: "The seminar on NVIDIA Jetson AI Edge Device is designed to introduce participants to the NVIDIA Jetson AI Edge Devices and Software Stacks Overview. The seminar begins with an overview of the NVIDIA Jetson AI Edge device introduction, covering its architecture, key features, and various applications. Participants are then guided through live Jetson demo with Deepstream & Generative AI. The seminar includes hands-on sessions where attendees learn to use Deepstream & Generative AI efficiently with the NVIDIA Jetson device and Software Stacks.",
+      highlights: [
+        "Comprehensive understanding of the architecture, features, and applications of NVIDIA Jetson AI Edge Device",
+        "Live demonstration with Deepstream & Generative AI",
+        "Hands-on sessions for practical learning",
+        "Introduction to NVIDIA Software Stacks",
+        "Real-time video analytics capabilities",
+        "Edge computing applications and use cases"
+      ],
+      gallery: [],
+      link: "https://techblitz2025.netlify.app/"
+    },
+    {
+      id: "event_006",
+      title: "Vidhyavardhin's National Level Project Showcase [VNPS]",
+      year: "2024-25",
+      date: "2025-03-22",
+      time: "10:00 AM – 1:00 PM",
+      venue: "VCET, Vasai",
+      description: "Showcase that featured various groundbreaking technologies.",
+      about: "Vidyavardhini College of Engineering and Technology (VCET) hosted a National Level Project Showcase, providing students a platform to present innovative projects across various technological domains. Projects demonstrated advancements in predictive analytics, AI in healthcare, energy optimization, autonomous robotics, image recognition, and human-machine interaction. The event successfully showcased the transformative potential of emerging technologies, fostering collaboration and knowledge exchange among students and industry experts.",
+      highlights: [
+        "Focus of Track 3: Data Science, AI, ML, Robotics, Deep Learning, NLP",
+        "Event Outcome: Successful platform for innovation and knowledge exchange",
+        "Fostered collaboration and exploration in emerging technologies",
+        "Addressed real-world challenges across various sectors",
+        "Projects in predictive analytics, AI in healthcare, energy optimization",
+        "Autonomous robotics, image recognition, and human-machine interaction"
+      ],
+      gallery: [],
+      link: "https://vcet-nsdc.vercel.app/nvidia"
+    },
+    {
+      id: "event_007",
+      title: "Oscillations 2024",
+      year: "2023-24",
+      date: "2023-04-01",
+      time: "10:00 AM – 12:00 PM",
+      venue: "VCET, Vasai",
+      description: "National Level Technical Paper Presentation competition.",
+      about: "OSCILLATIONS 2024, held on April 5th in collaboration with IETE Mumbai Centre, was a prestigious technical paper presentation event that offered students a platform to showcase their research, skills, and expertise. The event featured six diverse tracks, including mechanical systems, AI, IoT, civil engineering, and Indigenous Knowledge Systems (IKS).",
+      highlights: [
+        "Mechanical System Design, Renewable Energy, Electric Vehicles, AI & ML applications",
+        "IoT, Signal Processing, Wireless Communication, VLSI, Automation, Biomedical Instrumentation",
+        "Data Science, AI, Machine Learning, Robotics, Deep Learning, NLP",
+        "Cloud Computing, Big Data, Cybersecurity, Blockchain, Web & Mobile Applications",
+        "Civil Engineering: Concrete, Structural & Geotechnical, Environmental Engineering",
+        "Indigenous Knowledge Systems (IKS) integration with modern engineering and sciences",
+        "Judging Criteria: Originality, technical content, presentation skills"
+      ],
+      gallery: [],
+      link: "https://vcet-nsdc.vercel.app/vnps"
+    },
+    {
+      id: "event_008",
+      title: "Techblitz",
+      year: "2023-24",
+      date: "2023-04-05",
+      time: "10:00 AM – 5:00 PM",
+      venue: "VCET, Vasai",
+      description: "Techblitz redefines coding competitions by embracing AI tools, breaking away from traditional restrictions.",
+      about: "The TechBlitz challenge event organized by the National Students Data Corps (NSDC) at Vidyavardhini's College of Engineering and Technology (VCET) on March 15th, 2024, marked a significant milestone in the intersection of technology and education. Under the auspices of the Department of Artificial Intelligence and Data Science, the event showcased the prowess of budding technologists across three pivotal domains: web development using AI, UI/UX design, and data science using AI.",
+      highlights: [
+        "Showcased prowess of budding technologists in three domains",
+        "Web development using AI",
+        "UI/UX design",
+        "Data science using AI",
+        "Embracing AI tools in coding competitions",
+        "Breaking away from traditional restrictions"
+      ],
+      gallery: [],
+      link: "https://vcet-nsdc.vercel.app/oscillation"
+    },
+    {
+      id: "event_009",
+      title: "Expert Lecture on Power BI",
+      year: "2023-24",
+      date: "2023-04-10",
+      time: "10:00 AM – 12:00 PM",
+      venue: "VCET, Vasai",
+      description: "Students gained hands-on insights into the world of business intelligence, data visualization, and analytics.",
+      about: "The lecture focused on introducing students to Microsoft Power BI, a powerful tool for data analysis and interactive reporting. The resource person guided participants through real-world applications, dashboards, and visualization techniques, enabling them to understand how data-driven decision-making is transforming industries. The session also emphasized career opportunities in the field of business intelligence and analytics.",
+      highlights: [
+        "Introduction to Power BI fundamentals and role in modern analytics",
+        "Live demo: building dashboards and interactive reports",
+        "Insights into industry use-cases and practical applications",
+        "Q&A on tools, trends, and career scope",
+        "Encouraged exploration of data-driven projects and certifications"
+      ],
+      gallery: [],
+      link: "#"
+    },
+    {
+      id: "event_010",
+      title: "TechX",
+      year: "2023-24",
+      date: "2023-04-14",
+      time: "10:00 AM – 5:00 PM",
+      venue: "VCET, Vasai",
+      description: "Under the Department of Artificial Intelligence and Data Science, the NSDC organized its inaugural event, the Product Showcase Tech X, inaugurated by Chief Guest Akshay",
+      about: "Under the Department of Artificial Intelligence and Data Science, the NSDC organized its inaugural event, the Product Showcase 'Tech X', inaugurated by Chief Guest Akshay Bharambe sir. This event highlighted technical products integrating machine learning, AI concepts, and database management systems. Notable exhibits included Parking Pal, an AI-powered parking management system, the Android ecosystem showcasing innovative mobile applications, Solomon CMS, a content management system leveraging machine learning algorithms, and Binaural Beats, an AI-driven music platform for cognitive enhancement.",
+      highlights: [
+        "Event: Product Showcase 'Tech X' organized by NSDC",
+        "Chief Guest: Akshay Bharambe sir",
+        "Showcased products applying AI, ML and databases",
+        "Exhibits: Parking Pal, Android apps, Solomon CMS, Binaural Beats",
+        "Demonstrated commitment to cutting-edge technology",
+        "Platform for students to showcase expertise and innovation"
+      ],
+      gallery: [],
+      link: "https://vcet-nsdc.vercel.app/powerbi"
+    },
+    {
+      id: "event_011",
+      title: "Vcet Techzette",
+      year: "2023-24",
+      date: "2023-04-17",
+      time: "9:30 AM – 1:30 PM",
+      venue: "VCET, Vasai",
+      description: "The VCET TechZette – विसीईटी ज्ञानपत्र (www.techz.vcet.edu.in), a dynamic technical blog, serves as a digital hub for insightful discourse, featuring a plethora of technical articles",
+      about: "The VCET TechZette - विसीईटी ज्ञानपत्र (www.techz.vcet.edu.in), a dynamic technical blog, serves as a digital hub for insightful discourse, featuring a plethora of technical articles contributed by esteemed faculty members, subject matter experts, and the ingenious endeavors of students ranging from the second to final year. In a distinctive inauguration event under the Department of Artificial Intelligence and Data Science at Vidyavardhini's College of Engineering and Technology (VCET), with Chief Guest Mr. Rahul Mhatre, the unveiling of this specialized platform was a momentous occasion marked by eager anticipation and dynamic exchange.",
+      highlights: [
+        "Inauguration of VCET TechZette - विसीईटी ज्ञानपत्र (techz.vcet.edu.in)",
+        "Chief Guest: Mr. Rahul Mhatre",
+        "Launched dynamic blog with articles from faculty, experts, and students",
+        "Platform for sharing expertise and fostering collaborative learning",
+        "Covers AI, data science, and broader technical topics",
+        "Commenced an enriching journey into innovation"
+      ],
+      gallery: [],
+      link: "https://vcet-nsdc.vercel.app/product"
+    },
+    {
+      id: "event_012",
+      title: "NSDC Inauguration",
+      year: "2023-24",
+      date: "2023-04-20",
+      time: "10:00 AM – 12:00 PM",
+      venue: "VCET, Vasai",
+      description: "The National Student Data Corps (NSDC) stands as a beacon of opportunity, ushering students into the vibrant world of data science within a nurturing community.",
+      about: "The Inauguration of the National Students Data Corps (NSDC) student chapter under the Department of Artificial Intelligence and Data Science at Vidyavardhini's College of Engineering and Technology was a momentous occasion marked by excitement and promise. Chief Guest Mr. Rahul Mhatre along with faculty members, guests, as well as Students gathered to witness the unveiling of this pioneering initiative aimed at harnessing the power of data for transformative change.",
+      highlights: [
+        "Inaugural Event: Unveiling NSDC at VCET",
+        "Guests: Mr. Rahul Mhatre, Dr. Tatwadarshi Nagarhalli, Dr. Uday Aswalekar, Dr. Vikas Gupta",
+        "Logo unveiling and informative video presentation",
+        "Insights from Chief Guest Mr. Rahul Mhatre",
+        "New era of collaboration and exploration in data science",
+        "Journey to leverage data-driven insights for societal betterment"
+      ],
+      gallery: [],
+      link: "https://vcet-nsdc.vercel.app/techzette"
+    }
+  ]
+
+  const stockImages = [
+    "/assests/image.png",
+    "/assests/image.png",
+    "/assests/image.png",
+    "/assests/image.png",
+    "/assests/image.png",
+    "/assests/image.png",
+  ]
+
+  const eventsToDisplay = events.length > 0 ? events : sampleEvents
+
+  return (
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-900/10 via-violet-900/10 to-fuchsia-900/10">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-balance">Past Events</h2>
+          <p className="text-xl text-purple-200 max-w-2xl mx-auto text-pretty">
+            Explore our previous events and achievements
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ staggerChildren: 0.2 }}
+        >
+          {eventsToDisplay.map((event) => (
+            <EventCard key={event.id} event={event} onClick={setSelectedEvent} />
+          ))}
+        </motion.div>
+      </div>
+
+      <EventModal event={selectedEvent} onClose={() => setSelectedEvent(null)} stockImages={stockImages} />
+    </section>
+  )
+}
