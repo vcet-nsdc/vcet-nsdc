@@ -83,6 +83,7 @@ export const TRANSLATION_KEYS = {
 // TRANSLATION FUNCTION
 // ============================================================================
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function t(key: string, _: SupportedLanguage = DEFAULT_LANGUAGE): string {
   // In a real implementation, this would load translations from JSON files
   // For now, return the key as fallback

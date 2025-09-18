@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
 import { X, ZoomIn } from "lucide-react"
+import Image from "next/image"
 
 interface ImageCarouselProps {
   images: string[]
@@ -81,28 +82,30 @@ export function ImageCarousel({ images, eventTitle, isVisible }: ImageCarouselPr
         >
           {isVideo(images[currentImageIndex] || '') ? (
             <video
-              src={images[currentImageIndex]}
+              src={images[currentImageIndex] || ""}
               className="max-w-full max-h-full object-contain"
               controls
               muted
               loop
               playsInline
               onLoadedData={handleMediaLoad}
-              onError={() => handleMediaError(images[currentImageIndex] || '')}
+              onError={() => handleMediaError(images[currentImageIndex] || "")}
             />
           ) : (
-            <img
-              src={images[currentImageIndex]}
-              alt={`${eventTitle} event image ${currentImageIndex + 1}`}
+            <Image
+              src={images[currentImageIndex] || ""}
+              alt={`${eventTitle} event image ${Number(currentImageIndex) + 1}`}
               className="max-w-full max-h-full object-contain"
+              fill={false}
+              width={800}
+              height={600}
               onLoad={handleMediaLoad}
               onError={() => {
-                handleMediaError(images[currentImageIndex] || '')
-                // Fallback to default image
-                const img = document.querySelector(`img[alt="${eventTitle} event image ${currentImageIndex + 1}"]`) as HTMLImageElement
-                if (img) img.src = '/assests/image.png'
+                handleMediaError(images[currentImageIndex] || "")
               }}
               loading="lazy"
+              style={{ objectFit: "contain" }}
+              unoptimized
             />
           )}
           
@@ -168,10 +171,14 @@ export function ImageCarousel({ images, eventTitle, isVisible }: ImageCarouselPr
                   loop
                 />
               ) : (
-                <img
-                  src={images[currentImageIndex]}
+                <Image
+                  src={images[currentImageIndex] || ""}
                   alt={`${eventTitle} event image ${currentImageIndex + 1}`}
                   className="w-full h-full max-h-[90vh] object-contain"
+                  width={1200}
+                  height={900}
+                  style={{ objectFit: "contain" }}
+                  unoptimized
                 />
               )}
             </div>
