@@ -1,8 +1,7 @@
 "use client"
 
 import { motion, AnimatePresence } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { ExternalLink, X } from "lucide-react"
+import {  X } from "lucide-react"
 import { ImageCarousel } from "./imagecrousal"
 
 interface Event {
