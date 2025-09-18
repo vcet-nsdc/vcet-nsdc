@@ -20,6 +20,9 @@ export async function EventsList() {
 
   return (
     <div className="max-w-3xl mx-auto space-y-8 relative z-10">
+      <div className="absolute  text-white text-3xl font-bold z-10" style={{ fontFamily: 'Dosis, sans-serif' }}>
+        Upcoming Event
+      </div>
       {events.map((event) => (
         <EventCard 
           key={event.id}
