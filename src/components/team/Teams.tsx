@@ -73,7 +73,8 @@ const Teams: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative py-12 overflow-hidden">
+    <div className="relativ
+    e py-12 overflow-hidden">
       <motion.div 
         className="relative z-10 mt-20"
         variants={containerVariants}
