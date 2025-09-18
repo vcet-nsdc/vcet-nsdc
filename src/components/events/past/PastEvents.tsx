@@ -29,7 +29,7 @@ export function PastEventsSection({ events }: PastEventsSectionProps) {
   const sampleEvents: Event[] = [
     {
       id: "event_000",
-      title: "Code-o-Fiesta",
+      title: "Code-o-Fiesta 2025",
       year: "2025-26",
       date: "2025-09-13",
       time: "9:30 AM – 5:00 PM",
@@ -49,7 +49,7 @@ export function PastEventsSection({ events }: PastEventsSectionProps) {
 
     {
       id: "event_001",
-      title: "Techblitz",
+      title: "Techblitz 2025",
       year: "2024-25",
       date: "2025-02-25",
       time: "10:00 AM – 1:00 PM",
@@ -112,7 +112,7 @@ export function PastEventsSection({ events }: PastEventsSectionProps) {
     },
     {
       id: "event_003",
-      title: "Code o Fiesta",
+      title: "Code o Fiesta 2024",
       year: "2024-25",
       date: "2025-03-17",
       time: "11:00 AM – 3:00 PM",
@@ -249,7 +249,7 @@ export function PastEventsSection({ events }: PastEventsSectionProps) {
     },
     {
       id: "event_008",
-      title: "Techblitz",
+      title: "Techblitz 2024",
       year: "2023-24",
       date: "2023-04-05",
       time: "10:00 AM – 5:00 PM",

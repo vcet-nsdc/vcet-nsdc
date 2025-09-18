@@ -89,7 +89,7 @@ const EventCard: React.FC<EventCardProps> = ({
 
   return (
     <>
-      <div ref={cardWrapperRef} className="event-card-wrapper w-full">
+      <div ref={cardWrapperRef} className="event-card-wrapper w-full ">
         <div ref={cardRef} className="event-card card-surface rounded-3xl cursor-pointer">
           <div className="flex h-72 card-content">
             <div className="glass-pane" />
@@ -155,7 +155,7 @@ const EventCard: React.FC<EventCardProps> = ({
         {isModalOpen && (
           <div
             id="modal"
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 mt-20 rounded-3xl "
             // onClick={() => setIsModalOpen(false)} // Removed to prevent closing by clicking outside
           >
             <motion.div
@@ -182,7 +182,7 @@ const EventCard: React.FC<EventCardProps> = ({
                 </svg>
               </button>
               <div 
-                className="w-full p-6 text-left modal-content" 
+                className="w-full p-6 text-left modal-content rounded-md h-[85vh]" 
                 style={{ backgroundColor: 'rgba(23, 10, 36, 0.7)', backdropFilter: 'blur(12px)' }}
               >
                 <h3 className="text-fuchsia-100 text-lg font-heading mb-4">
