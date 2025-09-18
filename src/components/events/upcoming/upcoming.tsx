@@ -45,6 +45,7 @@ const Upcoming: React.FC = () => {
   return (
     <div className="font-body min-h-screen flex justify-center items-center">
       {/* Removed overlayRef div */}
+      
 
       {/* Removed Header Section */}
 
