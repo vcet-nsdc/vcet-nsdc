@@ -23,7 +23,7 @@ const Upcoming: React.FC = () => {
     {
       title: "TechX Product Showcase 2025",
       dateTime: "September 19, 2025 • 10:00 AM",
-      venue: "Labs 114 & 115, VCET, Vasai",
+      venue: "Labs 308, VCET, Vasai",
       shortDescription: "A one-day product showcase highlighting cutting-edge technologies, bridging academic learning with industry exposure.",
       imagePath: '/assests/image.png', // Using the same image for now
       overview: "TechX 2025 was a one-day Product Showcase event organized by the Department of Artificial Intelligence and Data Science at VCET on September 19, 2025. Guided by faculty coordinators Prof. Sejal Dmello, Prof. Bhavika Gharat, and Prof. Neha Raut, the event aimed to bridge academic learning with industry exposure.\n\nThe event brought together 35 students across 17 teams to exhibit projects infused with technical ingenuity and creative flair. Inaugurated by Principal Mr. Harish Vankudre and Dean of Academic Affairs Mr. Vikas Gupta, TechX emphasized the institution’s commitment to innovation and collaboration. Industry partners like Edba Academy, Tech Cryptors, and DataMango showcased products including advanced drones, high-performance GPUs, and blockchain-based tools.\n\nThrough hands-on engagement, students enhanced their technical expertise, presentation skills, and professional communication, while also fostering holistic personal and professional growth.",
