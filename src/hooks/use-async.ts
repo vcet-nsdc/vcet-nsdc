@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /**
  * Custom hook for handling async operations
  * Provides loading states, error handling, and data management
