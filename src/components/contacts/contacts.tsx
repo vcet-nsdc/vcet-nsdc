@@ -146,7 +146,7 @@ const Contacts = () => {
           <p>
             <span className="mr-2">📧</span>
             <span className="font-medium">Chairperson</span>:&nbsp;
-            <a className="underline hover:text-primary-light" href="mailto:shrya@vcet.edu.in">shrya@vcet.edu.in</a>
+            <a className="underline hover:text-primary-light" href="mailto:shreya.225297202@vcet.edu.in ">shreya.225297202@vcet.edu.in </a>
           </p>
           <p>
             <span className="mr-2">📧</span>

@@ -95,9 +95,9 @@ const Footer = () => {
 
               <div className="flex space-x-4 pt-2">
                 {[
-                  { icon: Linkedin, href: "#linkedin" },
+                  { icon: Linkedin, href: "https://www.linkedin.com/in/vcet-nsdc/" },
                   { icon: Youtube, href: "#youtube" },
-                  { icon: Instagram, href: "#instagram" },
+                  { icon: Instagram, href: "https://www.instagram.com/vcet.nsdc/" },
                 ].map(({ icon: Icon, href }, index) => (
                   <motion.a
                     key={index}

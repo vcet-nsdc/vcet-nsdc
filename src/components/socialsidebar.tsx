@@ -6,8 +6,8 @@ import { Mail, Linkedin, Instagram } from "lucide-react"
 export default function SocialSidebar() {
   const socialLinks = [
     { icon: Mail, href: "mailto:nsdc@vcet.edu.in", label: "Email" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Instagram, href: "#", label: "Instagram" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/vcet-nsdc/", label: "LinkedIn" },
+    { icon: Instagram, href: "https://www.instagram.com/vcet.nsdc/", label: "Instagram" },
   ]
 
   return (
