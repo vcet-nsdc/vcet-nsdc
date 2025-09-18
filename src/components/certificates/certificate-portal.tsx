@@ -354,8 +354,17 @@ export function CertificatePortal({
                   disabled={isGenerating}
                   className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-6 sm:px-8 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 w-full sm:w-auto"
                 >
-                  <Download className="w-5 h-5 mr-2" />
-                  Download Certificate
+                  {isGenerating ? (
+                    <span className="flex items-center gap-2">
+                      <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      Processing...
+                    </span>
+                  ) : (
+                    <>
+                      <Download className="w-5 h-5 mr-2" />
+                      Download Certificate
+                    </>
+                  )}
                 </Button>
                 {/* <Button
                   onClick={handleShareLinkedIn}
