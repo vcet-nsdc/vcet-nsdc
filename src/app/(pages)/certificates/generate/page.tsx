@@ -17,7 +17,6 @@ interface CertificateData {
 }
 
 export default function CertificateGeneratePage() {
-  const [certificateData, setCertificateData] = useState<CertificateData | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [formSubmitted, setFormSubmitted] = useState(false)
 
@@ -48,7 +47,6 @@ export default function CertificateGeneratePage() {
     
     await saveCertificate(storedCertificate)
     
-    setCertificateData(certificateData)
     setIsLoading(false)
     
     // Show success message
@@ -122,10 +120,9 @@ export default function CertificateGeneratePage() {
                     >
                       Find Certificate
                     </Button> */}
-                {/* <Button
+                {/*                 <Button
                   onClick={() => {
                     setFormSubmitted(false)
-                    setCertificateData(null)
                   }}
                   variant="outline"
                   className="bg-transparent border-green-500 text-green-200 hover:bg-green-500/20"
