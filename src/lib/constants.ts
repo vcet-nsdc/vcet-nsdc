@@ -34,6 +34,7 @@ export const NAVIGATION = {
     { label: 'Events', href: '/events' },
     { label: 'Team', href: '/team' },
     { label: 'Contact', href: '/contact' },
+    { label: 'Attendence', href: '/certificates/generate' },
   ],
   footer: [
     { label: 'Home', href: '/' },

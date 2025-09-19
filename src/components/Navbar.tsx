@@ -31,6 +31,9 @@ export default function Navbar() {
 					<li>
 						<Link href="/contact" className="hover:text-primary-light transition-colors">Contact</Link>
 					</li>
+					<li>
+						<Link href="/certificates/generate" className="hover:text-primary-light transition-colors">attendence</Link>
+					</li>
 				</ul>
 			</div>
 		</nav>
