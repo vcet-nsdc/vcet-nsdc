@@ -1,0 +1,80 @@
+[
+    {"id": 1,
+      "name": "Shreya Wankhede",
+      "position": "Chairpreson",
+      "email": "shreya.225297202@vcet.edu.in",
+      "instagram": "https://www.instagram.com/shreyeeahh?igsh=amRucjlmNTRsMGxo/",
+      "linkedin": "https://www.linkedin.com/in/shreya-wankhede-880308260?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "photo": "https://res.cloudinary.com/ddjcjgi7a/image/upload/v1757669764/shreyaNew_eumzbt.png"
+      },
+
+
+    {
+      "id": 2,
+      "name": "Saloni Sutar",
+      "position": "Secretary",
+      "email": "salonisutar16@gmail.com",
+      "instagram": "https://www.instagram.com/saloni_5261/",
+      "linkedin": "https://www.linkedin.com/in/salonisutar1304avsc?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "photo": "https://res.cloudinary.com/ddjcjgi7a/image/upload/v1757669284/saloni_ppn7z0.png"
+    },
+    
+    {
+        "id": 3,
+        "name": "Dhir Surti",
+        "position": "Treasurer",
+        "email": "dhir.225247102@vcet.edu.in",
+        "instagram": "https://www.instagram.com/dhir.surti_/",
+        "linkedin": "https://www.linkedin.com/in/dhir-surti-202532315?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "photo": "https://images.unsplash.com/photo-1650954913935-05f7a819b745?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+         
+      },
+      
+    {
+        "id": 4,
+        "name": "Ninad Patil",
+        "position": "Organizing Head",
+        "email": "ninad.225097101@vcet.edu.in",
+        "instagram":"https://www.instagram.com/ninadddddd/",
+        "linkedin": "https://www.linkedin.com/in/ninad-patil-87b20532b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "photo": "https://res.cloudinary.com/ddjcjgi7a/image/upload/v1757669480/ninad_dmp5jo.png"
+      },
+
+      {
+        "id": 5,
+        "name": "Vishwatej Sarang",
+        "position": "Organizing Head/Social Media Head/Website Head",
+        "email": "vishwatej.225187101@vcet.edu.in",
+        "instagram":"https://www.instagram.com/_.vishu_06/",
+        "linkedin": "https://www.linkedin.com/in/vishwatej-sarang-709174291?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "photo": "https://res.cloudinary.com/ddjcjgi7a/image/upload/v1757669266/vishu_cdymsb.png"
+      },
+    
+      {
+        "id": 6,
+        "name": "Aniruddh Sawant",
+        "position": "Creative Head",
+        "email": "aniruddh.225197108@vcet.edu.in",
+        "instagram":"https://www.instagram.com/aniruddh_s_/",
+        "linkedin": "http://linkedin.com/in/aniruddh-sawant-6ba8a2314",
+        "photo": "https://res.cloudinary.com/ddjcjgi7a/image/upload/v1757669507/ani_ofc8p8.png"
+      },
+      
+    {
+      "id": 7,
+      "name": "Gautam Chaudhari",
+      "position": "Technical Head",
+      "email": "gautam.224677101@vcet.edu.in",
+      "instagram":"https://www.instagram.com/chaudhari.gautam09/",
+      "linkedin": "https://www.linkedin.com/in/gautam-chaudhari-b70435279?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "photo": "https://res.cloudinary.com/ddjcjgi7a/image/upload/v1757669497/gautam_m13gtb.png"
+      },
+      {"id": 8,
+      "name": "Sakshi Prabhakar Patil",
+      "position": " Documentation & PR Head ",
+      "email": "sakshi.225117205@vcet.edu.in",
+      "instagram":"https://www.instagram.com/sakshi_11204_/",
+      "linkedin": " https://www.linkedin.com/in/sakshi-patil-3933a6328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "photo": "https://res.cloudinary.com/ddjcjgi7a/image/upload/v1757669293/sakshi_yt2nfa.png"
+    }
+    ]
