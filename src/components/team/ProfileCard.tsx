@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaInstagram, FaLinkedin, FaEnvelope } from "react-icons/fa";
 

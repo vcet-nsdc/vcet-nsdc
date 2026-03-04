@@ -4,7 +4,6 @@
  */
 
 import type { Metadata, Viewport } from 'next';
-import { Dosis, Manrope } from 'next/font/google';
 import { ErrorBoundary } from '@/components/ui/error-boundary';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
@@ -12,26 +11,6 @@ import ShaderBackground from '@/components/shader-background';
 import { APP_CONFIG } from '@/lib/constants';
 import './globals.css';
 import SocialSidebar from '@/components/socialsidebar';
-
-// ============================================================================
-// FONT CONFIGURATION
-// ============================================================================
-
-const manrope = Manrope({
-  variable: '--font-manrope',
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  display: 'swap',
-  preload: true,
-});
-
-const dosis = Dosis({
-  variable: '--font-dosis',
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  display: 'swap',
-  preload: true,
-});
 
 // ============================================================================
 // METADATA CONFIGURATION
@@ -133,9 +112,10 @@ export default function RootLayout({
         {/* DNS prefetch for performance */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//ik.imagekit.io" />
+        <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body
-        className={`${manrope.variable} ${dosis.variable} antialiased dark h-full flex flex-col`}
+        className={`antialiased dark h-full flex flex-col font-sans`}
         suppressHydrationWarning
       >
         <ErrorBoundary>

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 // Using standard img to avoid Next image domain config for now
 // import { FaInstagram, FaLinkedin } from "react-icons/fa";

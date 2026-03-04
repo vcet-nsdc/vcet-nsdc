@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Teams from '../Teams'
 
 const TE = () => {

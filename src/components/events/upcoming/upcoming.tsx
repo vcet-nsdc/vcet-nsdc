@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+
 // import eventImg from './event-img.png' // Make sure this path is correct
 import EventCard from './EventCard'
 
