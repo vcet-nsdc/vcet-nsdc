@@ -34,7 +34,7 @@ export const NAVIGATION = {
     { label: 'Events', href: '/events' },
     { label: 'Team', href: '/team' },
     { label: 'Contact', href: '/contact' },
-    { label: 'Attendence', href: '/certificates/generate' },
+    { label: 'Techblitz Registration', href: '/register' },
   ],
   footer: [
     { label: 'Home', href: '/' },

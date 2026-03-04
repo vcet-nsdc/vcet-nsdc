@@ -32,7 +32,7 @@ export default function Navbar() {
 						<Link href="/contact" className="hover:text-primary-light transition-colors">Contact</Link>
 					</li>
 					<li>
-						<Link href="/certificates/generate" className="hover:text-primary-light transition-colors">attendence</Link>
+						<Link href="/certificates/generate" className="hover:text-primary-light transition-colors">Techblits Registeration</Link>
 					</li>
 				</ul>
 			</div>
