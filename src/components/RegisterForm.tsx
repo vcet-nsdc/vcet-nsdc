@@ -179,10 +179,33 @@ export default function RegisterForm() {
           </div>
         </div>
 
-        {/* Section 5: Payment Verification */}
+        {/* Section 5: Make Payment */}
+        <div className="bg-white/5 border border-white/10 rounded-xl p-5 sm:p-8 relative">
+          <div className="absolute -top-3 left-6 bg-amber-600 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">
+            5. Make Payment
+          </div>
+
+          <div className="flex flex-col items-center mt-4 space-y-4">
+            <p className="text-white/80 text-sm text-center">
+              Scan the QR code below to make the payment via UPI
+            </p>
+            <div className="bg-white rounded-2xl p-4 shadow-lg">
+              <img
+                src="/assests/payment.jpeg"
+                alt="Payment QR Code"
+                className="w-56 h-56 sm:w-64 sm:h-64 object-contain"
+              />
+            </div>
+            <p className="text-white/60 text-sm font-mono">
+              UPI ID: varunsoni998@okaxis
+            </p>
+          </div>
+        </div>
+
+        {/* Section 6: Payment Verification */}
         <div className="bg-white/5 border border-white/10 rounded-xl p-5 sm:p-8 relative">
           <div className="absolute -top-3 left-6 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">
-            5. Payment Verification
+            6. Payment Verification
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
