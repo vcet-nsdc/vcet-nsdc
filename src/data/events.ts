@@ -34,29 +34,6 @@ export const events: readonly Event[] = [
     status: 'upcoming',
     category: 'competition',
   },
-  {
-    id: 'techx-product-showcase-2025',
-    title: 'TechX Product Showcase 2025',
-    dateTime: 'September 19, 2025 • 10:00 AM',
-    venue: 'Labs 114 & 115, VCET, Vasai',
-    shortDescription: 'A one-day product showcase highlighting cutting-edge technologies, bridging academic learning with industry exposure.',
-    imagePath: '/assests/image.png',
-    overview: 'TechX 2025 was a one-day Product Showcase event organized by the Department of Artificial Intelligence and Data Science at VCET on September 19, 2025. Guided by faculty coordinators Prof. Sejal Dmello, Prof. Bhavika Gharat, and Prof. Neha Raut, the event aimed to bridge academic learning with industry exposure.\n\nThe event brought together 35 students across 17 teams to exhibit projects infused with technical ingenuity and creative flair. Inaugurated by Principal Mr. Harish Vankudre and Dean of Academic Affairs Mr. Vikas Gupta, TechX emphasized the institution\'s commitment to innovation and collaboration. Industry partners like Edba Academy, Tech Cryptors, and DataMango showcased products including advanced drones, high-performance GPUs, and blockchain-based tools.\n\nThrough hands-on engagement, students enhanced their technical expertise, presentation skills, and professional communication, while also fostering holistic personal and professional growth.',
-    highlights: [
-      'Organized by the Department of Artificial Intelligence and Data Science, VCET.',
-      'Featured 17 student teams showcasing innovative projects.',
-      'Industry participation from Edba Academy, Tech Cryptors, DataMango, Zaplet, VM Protect, and Cosmic Spirit.',
-      'Products included the DJI AIR3S drone, RTX 3090/3080 graphics cards, blockchain-based tools, and wireless video systems.',
-      'Focused on enhancing technical, presentation, and communication skills through real-world exposure.',
-    ],
-    awards: [
-      'Recognition for outstanding projects and presentations.',
-      'Certificates of participation for all student teams.',
-      'Special mention for innovative and industry-relevant solutions.',
-    ],
-    status: 'upcoming',
-    category: 'showcase',
-  },
 ] as const;
 
 // ============================================================================

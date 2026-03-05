@@ -38,4 +38,5 @@ const RegistrationSchema: Schema = new Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
-export default mongoose.models.Registration || mongoose.model<IRegistration>('Registration', RegistrationSchema);
+const Registration = (mongoose.models.Registration || mongoose.model<IRegistration>('Registration', RegistrationSchema)) as mongoose.Model<IRegistration>;
+export default Registration;

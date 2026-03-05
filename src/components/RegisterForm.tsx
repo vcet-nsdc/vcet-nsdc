@@ -32,9 +32,10 @@ export default function RegisterForm() {
 
       setIsSuccess(true);
       window.scrollTo({ top: 0, behavior: "smooth" });
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
-      setErrorMsg(err.message || 'An unexpected error occurred. Please try again.');
+      const errorMessage = err instanceof Error ? err.message : 'An unexpected error occurred. Please try again.';
+      setErrorMsg(errorMessage);
     } finally {
       setIsSubmitting(false);
     }

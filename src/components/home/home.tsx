@@ -12,7 +12,6 @@ import { HighlightsSection } from '@/components/sections/highlights-section';
 import { QuickLinksSection } from '@/components/sections/quick-links-section';
 import { CTASection } from '@/components/sections/cta-section';
 import { APP_CONFIG } from '@/lib/constants';
-import Footer from '../Footer';
 
 // ============================================================================
 // METADATA
@@ -63,10 +62,6 @@ export default function HomePage() {
       {/* CTA Section */}
       <Suspense fallback={<div className="h-64" />}>
         <CTASection />
-      </Suspense>
-      {/* CTA Section */}
-      <Suspense fallback={<div className="h-64" />}>
-        <Footer />
       </Suspense>
 
 

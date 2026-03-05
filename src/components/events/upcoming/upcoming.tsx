@@ -19,25 +19,23 @@ const Upcoming: React.FC = () => {
   // Removed useEffect hook as its functionality is no longer needed in Upcoming or moved to EventCard
   
   const events = [
-    
     {
-      title: "TechX Product Showcase 2025",
-      dateTime: "September 19, 2025 • 10:00 AM",
-      venue: "Labs 308, VCET, Vasai",
-      shortDescription: "A one-day product showcase highlighting cutting-edge technologies, bridging academic learning with industry exposure.",
-      imagePath: '/assests/image.png', // Using the same image for now
-      overview: "TechX 2025 was a one-day Product Showcase event organized by the Department of Artificial Intelligence and Data Science at VCET on September 19, 2025. Guided by faculty coordinators Prof. Sejal Dmello, Prof. Bhavika Gharat, and Prof. Neha Raut, the event aimed to bridge academic learning with industry exposure.\n\nThe event brought together 35 students across 17 teams to exhibit projects infused with technical ingenuity and creative flair. Inaugurated by Principal Mr. Harish Vankudre and Dean of Academic Affairs Mr. Vikas Gupta, TechX emphasized the institution’s commitment to innovation and collaboration. Industry partners like Edba Academy, Tech Cryptors, and DataMango showcased products including advanced drones, high-performance GPUs, and blockchain-based tools.\n\nThrough hands-on engagement, students enhanced their technical expertise, presentation skills, and professional communication, while also fostering holistic personal and professional growth.",
+      title: "Techblitz 2026",
+      dateTime: "March 2026 • 10:00 AM",
+      venue: "VCET, Vasai",
+      shortDescription: "A premier tech trivia challenge where students showcase their technical knowledge and compete for exciting prizes.",
+      imagePath: '/assests/image.png',
+      overview: "Techblitz 2026 is an engaging technical trivia and quiz competition designed to test the knowledge, quick thinking, and problem-solving skills of students across various domains of technology. It brings together tech enthusiasts to compete in an intellectually stimulating environment. Participants will face questions ranging from fundamental concepts to the latest advancements in Artificial Intelligence, Data Science, Web Development, and more.",
       highlights: [
-        "Organized by the Department of Artificial Intelligence and Data Science, VCET.",
-        "Featured 17 student teams showcasing innovative projects.",
-        "Industry participation from Edba Academy, Tech Cryptors, DataMango, Zaplet, VM Protect, and Cosmic Spirit.",
-        "Products included the DJI AIR3S drone, RTX 3090/3080 graphics cards, blockchain-based tools, and wireless video systems.",
-        "Focused on enhancing technical, presentation, and communication skills through real-world exposure.",
+        "Interactive technical quiz rounds testing diverse computer science knowledge.",
+        "Opportunities to learn about the latest industry trends.",
+        "Engaging competition format designed to challenge and entertain.",
+        "Showcase your technical prowess among peers and win exciting rewards."
       ],
       awards: [
-        "Recognition for outstanding projects and presentations.",
-        "Certificates of participation for all student teams.",
-        "Special mention for innovative and industry-relevant solutions.",
+        "Exciting prizes for the winning teams.",
+        "Certificates of participation for all attendees.",
+        "Special recognition for top performers in specific domains."
       ],
     },
   ]

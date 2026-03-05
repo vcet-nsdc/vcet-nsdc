@@ -6,6 +6,10 @@ import path from 'path';
 
 export async function POST(req: NextRequest) {
   try {
+    // 1. Connect to database FIRST — fail fast if DB is unreachable
+    await connectToDatabase();
+
+    // 2. Parse form data
     const formData = await req.formData();
     
     // Extract text fields
@@ -17,47 +21,47 @@ export async function POST(req: NextRequest) {
     const leaderCollege = formData.get('leaderCollege') as string;
     const transactionId = formData.get('transactionId') as string;
 
-    // Optional structure for team members (we parse up to 2 additional members)
-    const members = [];
-    for (let i = 2; i <= 3; i++) {
-        const memberName = formData.get(`member${i}FullName`) as string;
-        const memberEmail = formData.get(`member${i}Email`) as string;
-        if (memberName && memberEmail) {
-            members.push({ fullName: memberName, email: memberEmail });
-        }
+    // Basic validation
+    if (!squadName || !domain || !leaderFullName || !leaderEmail || !leaderPhone || !leaderCollege || !transactionId) {
+      return NextResponse.json({ error: 'All required fields must be filled' }, { status: 400 });
     }
 
-    // Extract file
+    // Parse team members
+    const members = [];
+    for (let i = 2; i <= 3; i++) {
+      const memberName = formData.get(`member${i}FullName`) as string;
+      const memberEmail = formData.get(`member${i}Email`) as string;
+      if (memberName && memberEmail) {
+        members.push({ fullName: memberName, email: memberEmail });
+      }
+    }
+
+    // 3. Handle file upload
     const file = formData.get('paymentScreenshot') as File | null;
     let paymentScreenshotPath = '';
 
-    if (file) {
-      const bytes = await file.arrayBuffer();
-      const buffer = Buffer.from(bytes);
-
-      // Create uploads directory if it doesn't exist
-      const uploadDir = path.join(process.cwd(), 'public', 'uploads');
-      try {
-        await fs.access(uploadDir);
-      } catch {
-        await fs.mkdir(uploadDir, { recursive: true });
-      }
-
-      // Generate a unique filename and save
-      const ext = path.extname(file.name) || '.jpg';
-      const filename = `payment_${Date.now()}_${Math.random().toString(36).substring(7)}${ext}`;
-      const filePath = path.join(uploadDir, filename);
-      
-      await fs.writeFile(filePath, buffer);
-      paymentScreenshotPath = `/uploads/${filename}`;
-    } else {
-        return NextResponse.json({ error: 'Payment screenshot is required' }, { status: 400 });
+    if (!file || file.size === 0) {
+      return NextResponse.json({ error: 'Payment screenshot is required' }, { status: 400 });
     }
 
-    // Connect to database
-    await connectToDatabase();
+    const bytes = await file.arrayBuffer();
+    const buffer = Buffer.from(bytes);
 
-    // Create registration document
+    const uploadDir = path.join(process.cwd(), 'public', 'uploads');
+    try {
+      await fs.access(uploadDir);
+    } catch {
+      await fs.mkdir(uploadDir, { recursive: true });
+    }
+
+    const ext = path.extname(file.name) || '.jpg';
+    const filename = `payment_${Date.now()}_${Math.random().toString(36).substring(7)}${ext}`;
+    const filePath = path.join(uploadDir, filename);
+    
+    await fs.writeFile(filePath, buffer);
+    paymentScreenshotPath = `/uploads/${filename}`;
+
+    // 4. Save to database
     const newRegistration = new Registration({
       squadName,
       domain,
@@ -75,8 +79,17 @@ export async function POST(req: NextRequest) {
     await newRegistration.save();
 
     return NextResponse.json({ success: true, message: 'Registration successful' }, { status: 201 });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Registration API Error:', error);
-    return NextResponse.json({ error: error.message || 'Internal Server Error' }, { status: 500 });
+
+    // Give the user a helpful message based on error type
+    if (error instanceof Error) {
+      if (error.message.includes('ETIMEOUT') || error.message.includes('ECONNREFUSED')) {
+        return NextResponse.json({ error: 'Database connection failed. Please try again in a moment.' }, { status: 503 });
+      }
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
