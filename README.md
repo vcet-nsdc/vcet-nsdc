@@ -1,34 +1,88 @@
+<table>
+  <tr>
+    <td width='10%'><img src="public/assests/white NSDC logo.png" alt="NSDC Logo" width='100%'/></td>
+    <td width="90%"><b><big>Vidyavardhini College of Engineering and Technology</big></b></td>
+  </tr>
+</table>  
 
-# NSDC Next.js App
+---
+## National Students Data Corps – VCET
+<p>
+  A student-led data science community fostering innovation through AI, Data Science, and emerging technologies
+</p>
 
-This is a [Next.js](https://nextjs.org) project for the NSDC, bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app) and customized with TypeScript and TailwindCSS.
+---
 
-## Project Structure
+Welcome to the official repository of **National Students Data Corps (NSDC) – VCET**,  
+the student data science community at  
+**Vidyavardhini College of Engineering & Technology, Vasai**.
 
-```
-src/
-	app/
-		layout.tsx        # Root layout with custom fonts and metadata
-		page.tsx          # Home page with Next.js and Vercel links
-		globals.css       # Global styles, TailwindCSS, and color variables
-		events/           # Event-related routes (ongoing, past, upcoming)
-		team/             # Team structure (BE, TE, Developers)
-		home/, socials/, contact/  # Placeholder folders for future pages
-	components/
-		ui/               # (Currently empty, for UI components)
-	model/              # (Currently empty, for data models)
-	utils/              # (Currently empty, for utility functions)
-public/
-	*.svg, favicon.ico  # Static assets
-```
+We are a community of passionate students who love exploring, building, and sharing knowledge in the fields of AI, Data Science, and beyond.
 
-## Main Features
+---
 
-- **Next.js 15** with the App Router
-- **TypeScript** for type safety
-- **TailwindCSS 4** for utility-first styling
-- **Custom Google Fonts** (Geist, Geist Mono)
-- **ESLint** for code linting
+## About NSDC VCET
+
+The National Students Data Corps (NSDC) is a student chapter under the **Department of Artificial Intelligence and Data Science** at VCET, focused on:
+
+- Data Science & Analytics  
+- Artificial Intelligence & Machine Learning  
+- Deep Learning & NLP  
+- Web Development  
+- UI/UX Design  
+- Cloud Computing  
+- Open Source  
+- Emerging Technologies  
+
+**NSDC VCET** brings real-world tech exposure to our campus through:
+
+- Technical workshops & seminars  
+- Hackathons (Code-o-Fiesta, Techblitz)  
+- Product showcases (TechX)  
+- Expert lectures & industry sessions  
+- Coding competitions  
+- National-level project showcases  
+- Open-source contributions  
+
+---
+
+## Our Mission
+
+> To bridge the gap between academic learning and industry exposure by empowering students with practical skills, hands-on experience, and a collaborative mindset.
+
+We believe in:
+
+- Learning by building real projects  
+- Growing together as a community  
+- Sharing knowledge openly  
+- Supporting beginners and fostering talent  
+- Creating opportunities for everyone  
+
+---
+
+## Tech Stack
+
+This website is built with:
+
+- **Next.js 16** with the App Router  
+- **TypeScript** for type safety  
+- **TailwindCSS 4** for styling  
+- **MongoDB** with Mongoose for data storage  
+- **Framer Motion** & **GSAP** for animations  
+- **Vercel** for deployment  
+
+---
+
+## What You'll Find in This Repository
+
+- 🌐 **NSDC Official Website** – Event listings, team info, and registration  
+- 📋 **Event Management** – Upcoming, ongoing, and past events  
+- 📝 **Registration System** – Team registration with payment verification  
+- 🔐 **Admin Dashboard** – View registrations, filter by domain, export to PDF/Excel  
+- 👥 **Team Directory** – Heads, deputies, and developers  
+- 📱 **Social Links** – Community social media presence  
+
+---
 
 ## Getting Started
 
@@ -36,95 +90,120 @@ Install dependencies:
 
 ```bash
 npm install
-# or
-yarn install
-# or
-pnpm install
-# or
-bun install
+```
+
+Set up environment variables:
+
+```bash
+# .env.local
+MONGODB_URI=your_mongodb_connection_string
 ```
 
 Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view the app.
 
 ## Scripts
 
-- `dev`   – Start the development server with Turbopack
-- `build` – Build the app for production
-- `start` – Start the production server
-- `lint`  – Run ESLint
-
-## Customization
-
-- Edit `src/app/page.tsx` for the home page
-- Add new routes/pages in `src/app/`
-- Add components in `src/components/`
-- Add styles in `src/app/globals.css`
-
-## Dependencies
-
-- next@15.5.2
-- react@19.1.0
-- react-dom@19.1.0
-- tailwindcss@4
-- typescript@5
-- eslint@9
-
-## Linting & Formatting
-
-ESLint is configured with Next.js and TypeScript support. See `eslint.config.mjs` for details.
-
-## Notes
-
-- Most folders (components/ui, model, utils, events, team, etc.) are currently empty and ready for future development.
-- The project uses the new Next.js App Router and custom font setup.
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start the dev server with Turbopack |
+| `npm run build` | Build for production |
+| `npm run start` | Start the production server |
+| `npm run lint` | Run ESLint |
 
 ---
 
-For more, see the [Next.js Documentation](https://nextjs.org/docs) and [TailwindCSS Documentation](https://tailwindcss.com/docs).
+## How to Contribute
 
-## Getting Started
+We welcome contributions from everyone!
 
-First, run the development server:
+You can contribute by:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Improving documentation  
+- Fixing bugs  
+- Adding new features or event pages  
+- Enhancing UI/UX  
+- Submitting project ideas  
+- Sharing learning resources  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Who Can Join?
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Anyone from **Vidyavardhini College of Engineering & Technology** who is:
 
-## Learn More
+- Curious about data science and technology  
+- Willing to learn and grow  
+- Ready to collaborate and build  
+- Interested in real-world projects  
 
-To learn more about Next.js, take a look at the following resources:
+No prior experience required —  
+**just curiosity, consistency, and a growth mindset.**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Community Values
 
-## Deploy on Vercel
+At NSDC VCET, we strongly believe in:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Open collaboration  
+- Respect for all members  
+- Inclusive and friendly environment  
+- Zero tolerance for harassment  
+- Innovation-first mindset  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Everyone is welcome here.
+
+---
+
+## Our Philosophy
+
+> "Data is the new oil, and together we refine it into innovation."
+
+We grow faster when we grow together.
+
+---
+
+## Our Events
+
+| Event | Description |
+|-------|-------------|
+| **Techblitz** | Tech trivia challenge showcasing technical knowledge |
+| **TechX** | Product showcase bridging academics and industry |
+| **Code-o-Fiesta** | Coding competition building real-world solutions |
+| **Oscillations** | National-level technical paper presentation |
+| **VNPS** | National-level project showcase |
+| **Expert Lectures** | Industry sessions on Power BI, NVIDIA Jetson, and more |
+
+---
+
+## Contact & Links
+
+- 🏫 **College:** Vidyavardhini College of Engineering & Technology, Vasai  
+- 🧑‍💻 **Department:** Artificial Intelligence and Data Science  
+- 🌐 **Website:** [vcet-nsdc.vercel.app](https://vcet-nsdc.vercel.app)  
+- 💼 **Community:** National Students Data Corps – VCET  
+
+---
+
+## Final Note
+
+NSDC VCET is not just a club.  
+It's a **learning ecosystem**.
+
+If you want to:
+
+- Build real data-driven projects  
+- Participate in hackathons and showcases  
+- Learn industry-level AI & Data Science  
+- Meet like-minded developers and innovators  
+
+**You are already in the right place.**
+
+Welcome to **NSDC VCET** 🚀  
+Welcome to **Vidyavardhini College of Engineering & Technology**.
