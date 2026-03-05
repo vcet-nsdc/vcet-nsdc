@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
 import Registration from '@/models/Registration';
-import { promises as fs } from 'fs';
-import path from 'path';
 
 export async function POST(req: NextRequest) {
   try {
@@ -36,30 +34,22 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // 3. Handle file upload
+    // 3. Handle file — convert to base64 and store in MongoDB
     const file = formData.get('paymentScreenshot') as File | null;
-    let paymentScreenshotPath = '';
 
     if (!file || file.size === 0) {
       return NextResponse.json({ error: 'Payment screenshot is required' }, { status: 400 });
     }
 
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-
-    const uploadDir = path.join(process.cwd(), 'public', 'uploads');
-    try {
-      await fs.access(uploadDir);
-    } catch {
-      await fs.mkdir(uploadDir, { recursive: true });
+    // Limit file size to 5MB
+    if (file.size > 5 * 1024 * 1024) {
+      return NextResponse.json({ error: 'Screenshot must be under 5MB' }, { status: 400 });
     }
 
-    const ext = path.extname(file.name) || '.jpg';
-    const filename = `payment_${Date.now()}_${Math.random().toString(36).substring(7)}${ext}`;
-    const filePath = path.join(uploadDir, filename);
-    
-    await fs.writeFile(filePath, buffer);
-    paymentScreenshotPath = `/uploads/${filename}`;
+    const bytes = await file.arrayBuffer();
+    const base64 = Buffer.from(bytes).toString('base64');
+    const mimeType = file.type || 'image/jpeg';
+    const paymentScreenshot = `data:${mimeType};base64,${base64}`;
 
     // 4. Save to database
     const newRegistration = new Registration({
@@ -73,7 +63,7 @@ export async function POST(req: NextRequest) {
       },
       members,
       transactionId,
-      paymentScreenshot: paymentScreenshotPath
+      paymentScreenshot
     });
 
     await newRegistration.save();
@@ -82,7 +72,6 @@ export async function POST(req: NextRequest) {
   } catch (error: unknown) {
     console.error('Registration API Error:', error);
 
-    // Give the user a helpful message based on error type
     if (error instanceof Error) {
       if (error.message.includes('ETIMEOUT') || error.message.includes('ECONNREFUSED')) {
         return NextResponse.json({ error: 'Database connection failed. Please try again in a moment.' }, { status: 503 });

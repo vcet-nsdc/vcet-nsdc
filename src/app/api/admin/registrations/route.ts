@@ -15,9 +15,16 @@ export async function GET(req: NextRequest) {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const filter: Record<string, any> = domain && domain !== 'all' ? { domain } : {};
-    const registrations = await Registration.find(filter).sort({ createdAt: -1 }).lean();
+    const registrations = await Registration.find(filter, { paymentScreenshot: 0 }).sort({ createdAt: -1 }).lean();
 
-    return NextResponse.json({ success: true, data: registrations }, { status: 200 });
+    // Add a flag so the admin UI knows if a screenshot exists
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const data = (registrations as any[]).map(r => ({
+      ...r,
+      hasScreenshot: true,  // If it got saved, it has one (it's required)
+    }));
+
+    return NextResponse.json({ success: true, data }, { status: 200 });
   } catch (error: unknown) {
     console.error('Admin API Error:', error);
     const msg = error instanceof Error ? error.message : 'Internal Server Error';

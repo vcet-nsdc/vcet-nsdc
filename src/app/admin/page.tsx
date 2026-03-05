@@ -379,12 +379,10 @@ export default function AdminPage() {
                       </td>
                       <td className="px-4 py-3 text-white/70 font-mono text-xs">{r.transactionId}</td>
                       <td className="px-4 py-3">
-                        {r.paymentScreenshot ? (
-                          <a href={r.paymentScreenshot} target="_blank" rel="noopener noreferrer"
-                            className="text-purple-400 hover:text-purple-300 underline text-xs flex items-center gap-1">
-                            <Download className="w-3 h-3" /> View
-                          </a>
-                        ) : "-"}
+                        <a href={`/api/admin/screenshot/${r._id}?auth=${authToken}`} target="_blank" rel="noopener noreferrer"
+                          className="text-purple-400 hover:text-purple-300 underline text-xs flex items-center gap-1">
+                          <Download className="w-3 h-3" /> View
+                        </a>
                       </td>
                       <td className="px-4 py-3 text-white/50 text-xs whitespace-nowrap">
                         {new Date(r.createdAt).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" })}
