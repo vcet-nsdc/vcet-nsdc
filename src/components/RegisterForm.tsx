@@ -182,7 +182,7 @@ export default function RegisterForm() {
         {/* Section 5: Make Payment */}
         <div className="bg-white/5 border border-white/10 rounded-xl p-5 sm:p-8 relative">
           <div className="absolute -top-3 left-6 bg-amber-600 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">
-            5. Make Payment
+            5. Make Payment (150 Rs)
           </div>
 
           <div className="flex flex-col items-center mt-4 space-y-4">

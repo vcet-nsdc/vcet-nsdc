@@ -16,7 +16,7 @@ export default function RegisterPage() {
           <h1 className="font-heading text-4xl sm:text-6xl md:text-7xl font-bold mb-4">
             <span className="text-white">Enroll </span>
             <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-              Now
+              Now!  
             </span>
           </h1>
           <p className="text-white/70 max-w-2xl mx-auto text-lg font-sans">
