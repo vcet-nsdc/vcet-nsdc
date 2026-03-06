@@ -16,19 +16,21 @@ export async function GET(req: NextRequest) {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const filter: Record<string, any> = domain && domain !== 'all' ? { domain } : {};
-    const registrations = await Registration.find(filter).sort({ createdAt: -1 }).lean();
+    const registrations = await Registration.find(filter).select('-paymentScreenshot').sort({ createdAt: -1 }).lean();
 
     // Build flat rows for Excel
     interface RegistrationDoc {
+      _id: string;
       squadName: string;
       domain: string;
       leader: { fullName: string; email: string; phone: string; college: string };
       members: { fullName: string; email: string }[];
       transactionId: string;
-      paymentScreenshot: string;
+      paymentScreenshot?: string;
       createdAt: Date;
     }
 
+    const origin = req.nextUrl.origin;
     const rows = (registrations as unknown as RegistrationDoc[]).map((r, i) => ({
       'S.No': i + 1,
       'Squad Name': r.squadName,
@@ -42,7 +44,7 @@ export async function GET(req: NextRequest) {
       'Member 3 Name': r.members?.[1]?.fullName || '',
       'Member 3 Email': r.members?.[1]?.email || '',
       'Transaction ID': r.transactionId,
-      'Screenshot Path': r.paymentScreenshot,
+      'Screenshot URL': `${origin}/api/admin/screenshot/${r._id}`,
       'Registered At': r.createdAt ? new Date(r.createdAt).toLocaleString('en-IN') : '',
     }));
 
