@@ -55,12 +55,22 @@ export default function RegisterForm() {
         <p className="text-white/80 text-lg mb-8 relative z-10 max-w-lg mx-auto font-sans">
           Welcome to the event. Your team details have been recorded. Check your email for further instructions.
         </p>
-        <button
-          onClick={() => router.push("/")}
-          className="relative z-10 bg-white/10 text-white font-semibold text-lg px-8 py-3 rounded-lg border border-white/20 hover:bg-white/20 transition-all"
-        >
-          Return to Home
-        </button>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
+          <a
+            href="https://chat.whatsapp.com/KQoIfrNGOuPElrd1Nwyst7"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-green-600 hover:bg-green-500 text-white font-semibold text-lg px-8 py-3 rounded-lg transition-all flex items-center gap-2 shadow-[0_0_15px_rgba(34,197,94,0.4)]"
+          >
+            Join WhatsApp Group
+          </a>
+          <button
+            onClick={() => router.push("/")}
+            className="bg-white/10 text-white font-semibold text-lg px-8 py-3 rounded-lg border border-white/20 hover:bg-white/20 transition-all"
+          >
+            Return to Home
+          </button>
+        </div>
       </div>
     );
   }
