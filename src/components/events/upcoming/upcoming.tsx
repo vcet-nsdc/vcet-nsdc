@@ -25,7 +25,7 @@ const Upcoming: React.FC = () => {
       venue: 'VCET, Vasai',
       shortDescription:
         'TechBlitz 2026 is a high-voltage, manga-themed tech competition organized by VCET NSDC. Assemble your squad, pick your domain, and battle it out with the brightest minds across campuses. Whether you code, design, or innovate - this is your arena.',
-      imagePath: '/assests/image.png',
+      imagePath: '/assests/techblitz.jpeg',
       overview:
         'TechBlitz 2026 is a high-voltage, manga-themed tech competition organized by VCET NSDC. Assemble your squad, pick your domain, and battle it out with the brightest minds across campuses. Whether you code, design, or innovate - this is your arena.',
       highlights: [
