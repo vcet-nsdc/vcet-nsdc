@@ -40,8 +40,7 @@ export function Footer() {
         className="relative z-10 max-w-7xl mx-auto px-6 py-16"
         variants={containerVariants}
         initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-100px' }}
+        animate="visible"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About Us Section */}
@@ -124,7 +123,12 @@ export function Footer() {
         {/* Bottom border line */}
         <motion.div className="mt-12 pt-8 border-t border-gray-800" variants={itemVariants}>
           <div className="text-center text-gray-400 text-sm">
-            <p>&copy; 2025 NSDC Student Chapter. All rights reserved.</p>
+            <p className="mb-2 text-gray-300">
+              Developed by <br />
+              Suraj Phirke <br />
+              Bhavesh Verma | Madhusudan Chanda | Naman Pandey | Soham Pansare
+            </p>
+            <p>&copy; {new Date().getFullYear()} VCET. All rights are reserved to VCET NSDC.</p>
           </div>
         </motion.div>
       </motion.div>

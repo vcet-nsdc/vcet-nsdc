@@ -95,7 +95,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full" suppressHydrationWarning>
+    <html lang="en" className="min-h-screen" suppressHydrationWarning>
       <head>
         {/* Preconnect to external domains for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -115,7 +115,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body
-        className={`antialiased dark h-full flex flex-col font-sans`}
+        className={`antialiased dark min-h-screen flex flex-col font-sans`}
         suppressHydrationWarning
       >
         <ErrorBoundary>

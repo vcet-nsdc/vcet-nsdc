@@ -1,209 +1,356 @@
-<table>
-  <tr>
-    <td width='10%'><img src="public/assests/white NSDC logo.png" alt="NSDC Logo" width='100%'/></td>
-    <td width="90%"><b><big>Vidyavardhini College of Engineering and Technology</big></b></td>
-  </tr>
-</table>  
-
----
-## National Students Data Corps – VCET
-<p>
-  A student-led data science community fostering innovation through AI, Data Science, and emerging technologies
+<p align="center">
+  <img src="public/assests/final.png" alt="NSDC VCET banner" width="100%" />
 </p>
 
----
+<p align="center">
+  <img src="public/assests/white%20NSDC%20logo.png" alt="NSDC VCET Logo" width="120" />
+</p>
 
-Welcome to the official repository of **National Students Data Corps (NSDC) – VCET**,  
-the student data science community at  
-**Vidyavardhini College of Engineering & Technology, Vasai**.
+<p align="center">
+  <a href="https://github.com/vcet-nsdc/vcet-nsdc">
+    <img alt="repo" src="https://img.shields.io/badge/repo-vcet--nsdc%2Fvcet--nsdc-111827" />
+  </a>
+  <img alt="build" src="https://img.shields.io/badge/build-passing-brightgreen" />
+  <a href="./LICENSE">
+    <img alt="license" src="https://img.shields.io/badge/license-MIT-blue" />
+  </a>
+  <img alt="version" src="https://img.shields.io/badge/version-1.0.0-0ea5e9" />
+</p>
 
-We are a community of passionate students who love exploring, building, and sharing knowledge in the fields of AI, Data Science, and beyond.
+# NSDC VCET Website
 
----
+Official website for **National Students Data Corps (NSDC) – VCET**, a student-led data science community at **Vidyavardhini College of Engineering & Technology, Vasai**.
 
-## About NSDC VCET
+This repository powers the public site experience (home, team, events, socials, contact) plus operational flows like event registrations (with payment proof), an admin dashboard (with export), and certificate search/management.
 
-The National Students Data Corps (NSDC) is a student chapter under the **Department of Artificial Intelligence and Data Science** at VCET, focused on:
+**Live site:** https://vcet-nsdc.vercel.app  
+**Repository:** https://github.com/vcet-nsdc/vcet-nsdc  
+**Author (license holder):** Surajphirke3
 
-- Data Science & Analytics  
-- Artificial Intelligence & Machine Learning  
-- Deep Learning & NLP  
-- Web Development  
-- UI/UX Design  
-- Cloud Computing  
-- Open Source  
-- Emerging Technologies  
+## Table of Contents
 
-**NSDC VCET** brings real-world tech exposure to our campus through:
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Screenshots](#screenshots)
+- [API](#api)
+- [Configuration](#configuration)
+- [Folder Structure](#folder-structure)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
 
-- Technical workshops & seminars  
-- Hackathons (Code-o-Fiesta, Techblitz)  
-- Product showcases (TechX)  
-- Expert lectures & industry sessions  
-- Coding competitions  
-- National-level project showcases  
-- Open-source contributions  
+## Features
 
----
-
-## Our Mission
-
-> To bridge the gap between academic learning and industry exposure by empowering students with practical skills, hands-on experience, and a collaborative mindset.
-
-We believe in:
-
-- Learning by building real projects  
-- Growing together as a community  
-- Sharing knowledge openly  
-- Supporting beginners and fostering talent  
-- Creating opportunities for everyone  
-
----
+- Landing page sections (hero, about, highlights, quick links)
+- Events: upcoming, ongoing, and past events
+- Team directory pages (BE/SE/TE, developers)
+- Contact form that stores messages in MongoDB
+- Registration flow:
+  - Team/squad registration
+  - Payment screenshot upload (stored as base64 in MongoDB)
+  - Transaction ID tracking
+- Admin endpoints protected with HTTP Basic Auth:
+  - View registrations (with domain filter)
+  - Export registrations to Excel (.xlsx)
+  - View payment screenshots by registration ID
+- Certificates API:
+  - Search certificates by email
+  - Create, update (download/share tracking), and delete certificates
 
 ## Tech Stack
 
-This website is built with:
+- **Next.js (App Router)** + **React**
+- **TypeScript**
+- **Tailwind CSS**
+- **MongoDB** + **Mongoose**
+- **React Hook Form** + **Zod** (forms & validation)
+- **Framer Motion** (animation)
+- **xlsx** and **jsPDF** (exports/reporting utilities)
 
-- **Next.js 16** with the App Router  
-- **TypeScript** for type safety  
-- **TailwindCSS 4** for styling  
-- **MongoDB** with Mongoose for data storage  
-- **Framer Motion** & **GSAP** for animations  
-- **Vercel** for deployment  
+## Prerequisites
 
----
+- Node.js 18.18+ (or newer)
+- npm (comes with Node.js)
+- A MongoDB instance (local or cloud)
 
-## What You'll Find in This Repository
+## Installation
 
-- 🌐 **NSDC Official Website** – Event listings, team info, and registration  
-- 📋 **Event Management** – Upcoming, ongoing, and past events  
-- 📝 **Registration System** – Team registration with payment verification  
-- 🔐 **Admin Dashboard** – View registrations, filter by domain, export to PDF/Excel  
-- 👥 **Team Directory** – Heads, deputies, and developers  
-- 📱 **Social Links** – Community social media presence  
+1. Clone the repository
 
----
+   ```bash
+   git clone https://github.com/vcet-nsdc/vcet-nsdc.git
+   cd vcet-nsdc
+   ```
 
-## Getting Started
+2. Install dependencies
 
-Install dependencies:
+   ```bash
+   npm install
+   ```
 
-```bash
-npm install
-```
+3. Create a local environment file
 
-Set up environment variables:
+   ```bash
+   # .env.local
+   MONGODB_URI="mongodb+srv://<user>:<pass>@<cluster>/<db>?retryWrites=true&w=majority"
 
-```bash
-# .env.local
-MONGODB_URI=your_mongodb_connection_string
-```
+   # Recommended (admin API protection)
+   ADMIN_USERNAME="your-admin-username"
+   ADMIN_PASSWORD="your-admin-password"
 
-Run the development server:
+   # Optional
+   NEXT_PUBLIC_APP_URL="http://localhost:3000"
+   NEXT_PUBLIC_API_URL="/api"
+   GOOGLE_SITE_VERIFICATION=""
+   LOGGING_ENDPOINT=""
+   ```
+
+4. Start the development server
+
+   ```bash
+   npm run dev
+   ```
+
+5. Open the app
+
+   - http://localhost:3000
+
+## Usage
+
+### Common scripts
 
 ```bash
 npm run dev
+npm run build
+npm run start
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the app.
+### Registration (UI)
 
-## Scripts
+- Go to `/register`
+- Fill in squad/team details
+- Upload a payment screenshot
+- Submit to create a registration entry in MongoDB
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start the dev server with Turbopack |
-| `npm run build` | Build for production |
-| `npm run start` | Start the production server |
-| `npm run lint` | Run ESLint |
+### Admin (API)
 
----
+Admin endpoints under `/api/admin/*` require HTTP Basic Auth.
 
-## How to Contribute
+Example: generate the Basic token
 
-We welcome contributions from everyone!
+```bash
+node -e "console.log(Buffer.from(process.env.U+':'+process.env.P).toString('base64'))"
+```
 
-You can contribute by:
+Then use it as:
 
-- Improving documentation  
-- Fixing bugs  
-- Adding new features or event pages  
-- Enhancing UI/UX  
-- Submitting project ideas  
-- Sharing learning resources  
+```bash
+curl -H "Authorization: Basic <base64(username:password)>" http://localhost:3000/api/admin/registrations
+```
 
----
+## Screenshots
 
-## Who Can Join?
+If you don’t have your own screenshots yet, you can start with the included assets:
 
-Anyone from **Vidyavardhini College of Engineering & Technology** who is:
+- Banner: `public/assests/final.png`
+- Sample imagery: `public/assests/image.png`, `public/assests/techblitz.jpeg`
 
-- Curious about data science and technology  
-- Willing to learn and grow  
-- Ready to collaborate and build  
-- Interested in real-world projects  
+Example embed:
 
-No prior experience required —  
-**just curiosity, consistency, and a growth mindset.**
+![NSDC VCET banner](public/assests/final.png)
 
----
+## API
 
-## Community Values
+Base URL (local): `http://localhost:3000`  
+Base path: `/api`
 
-At NSDC VCET, we strongly believe in:
+### POST /api/register
 
-- Open collaboration  
-- Respect for all members  
-- Inclusive and friendly environment  
-- Zero tolerance for harassment  
-- Innovation-first mindset  
+Creates a registration record from multipart form data.
 
-Everyone is welcome here.
+Required form fields:
 
----
+- `squadName` (string)
+- `domain` (string)
+- `leaderFullName` (string)
+- `leaderEmail` (string)
+- `leaderPhone` (string)
+- `leaderCollege` (string)
+- `transactionId` (string)
+- `paymentScreenshot` (file, max 5MB)
+- Optional members:
+  - `member2FullName`, `member2Email`
+  - `member3FullName`, `member3Email`
 
-## Our Philosophy
+Example:
 
-> "Data is the new oil, and together we refine it into innovation."
+```bash
+curl -X POST "http://localhost:3000/api/register" \
+  -F "squadName=Team Alpha" \
+  -F "domain=AI/ML" \
+  -F "leaderFullName=Jane Doe" \
+  -F "leaderEmail=jane@example.com" \
+  -F "leaderPhone=9999999999" \
+  -F "leaderCollege=VCET" \
+  -F "transactionId=TXN123" \
+  -F "paymentScreenshot=@./payment.jpeg"
+```
 
-We grow faster when we grow together.
+### POST /api/contact
 
----
+Stores a contact message in MongoDB.
 
-## Our Events
+Body (JSON):
 
-| Event | Description |
-|-------|-------------|
-| **Techblitz** | Tech trivia challenge showcasing technical knowledge |
-| **TechX** | Product showcase bridging academics and industry |
-| **Code-o-Fiesta** | Coding competition building real-world solutions |
-| **Oscillations** | National-level technical paper presentation |
-| **VNPS** | National-level project showcase |
-| **Expert Lectures** | Industry sessions on Power BI, NVIDIA Jetson, and more |
+```json
+{
+  "name": "Jane Doe",
+  "email": "jane@example.com",
+  "contact": "9999999999",
+  "message": "Hello NSDC!"
+}
+```
 
----
+Example:
 
-## Contact & Links
+```bash
+curl -X POST "http://localhost:3000/api/contact" \
+  -H "Content-Type: application/json" \
+  -d '{"name":"Jane Doe","email":"jane@example.com","contact":"9999999999","message":"Hello NSDC!"}'
+```
 
-- 🏫 **College:** Vidyavardhini College of Engineering & Technology, Vasai  
-- 🧑‍💻 **Department:** Artificial Intelligence and Data Science  
-- 🌐 **Website:** [vcet-nsdc.vercel.app](https://vcet-nsdc.vercel.app)  
-- 💼 **Community:** National Students Data Corps – VCET  
+### GET /api/certificates?email=...
 
----
+Searches the latest certificate by email.
 
-## Final Note
+Example:
 
-NSDC VCET is not just a club.  
-It's a **learning ecosystem**.
+```bash
+curl "http://localhost:3000/api/certificates?email=jane@example.com"
+```
 
-If you want to:
+### POST /api/certificates
 
-- Build real data-driven projects  
-- Participate in hackathons and showcases  
-- Learn industry-level AI & Data Science  
-- Meet like-minded developers and innovators  
+Creates a new certificate.
 
-**You are already in the right place.**
+Body (JSON):
 
-Welcome to **NSDC VCET** 🚀  
-Welcome to **Vidyavardhini College of Engineering & Technology**.
+```json
+{
+  "certificateNumber": "NSDC-2026-0001",
+  "name": "Jane Doe",
+  "product": "Techblitz",
+  "email": "jane@example.com",
+  "date": "2026-03-28"
+}
+```
+
+### GET /api/certificates/:id
+
+Fetches a certificate by MongoDB document ID.
+
+### PUT /api/certificates/:id
+
+Updates a certificate (download/share tracking) and optionally stores `imageData`.
+
+Body (JSON):
+
+```json
+{ "action": "download" }
+```
+
+```json
+{ "action": "share", "imageData": "data:image/png;base64,..." }
+```
+
+### DELETE /api/certificates/:id
+
+Deletes a certificate by ID.
+
+### GET /api/admin/registrations?domain=...
+
+Returns registrations (excluding the screenshot blob). Requires Basic Auth.
+
+- `domain` (optional): domain name, or `all`
+
+Example:
+
+```bash
+curl -H "Authorization: Basic <token>" "http://localhost:3000/api/admin/registrations?domain=all"
+```
+
+### GET /api/admin/export?domain=...
+
+Downloads an Excel export of registrations. Requires Basic Auth.
+
+Example:
+
+```bash
+curl -L -H "Authorization: Basic <token>" "http://localhost:3000/api/admin/export?domain=all" --output registrations.xlsx
+```
+
+### GET /api/admin/screenshot/:id
+
+Serves the stored payment screenshot for a registration. Requires Basic Auth.
+
+Notes:
+
+- You can also pass `?auth=<base64(username:password)>` for convenience when opening in a new tab.
+
+## Configuration
+
+Environment variables:
+
+- `MONGODB_URI` (required): MongoDB connection string used by the API routes
+- `ADMIN_USERNAME` (recommended): Basic Auth username for `/api/admin/*`
+- `ADMIN_PASSWORD` (recommended): Basic Auth password for `/api/admin/*`
+- `NEXT_PUBLIC_APP_URL` (optional): public app URL used for metadata/config
+- `NEXT_PUBLIC_API_URL` (optional): API base URL (defaults to `/api`)
+- `GOOGLE_SITE_VERIFICATION` (optional): Google Search Console verification token
+- `LOGGING_ENDPOINT` (optional): remote logging endpoint (used in production)
+
+## Folder Structure
+
+```
+.
+├─ public/
+│  ├─ assests/            # Images and logos
+│  ├─ staticdata/         # JSON data used by pages/components
+│  └─ uploads/            # Uploaded files (if used by older flows)
+├─ src/
+│  ├─ app/                # Next.js App Router pages + API routes
+│  ├─ components/         # UI and feature components
+│  ├─ data/               # Local TS data sources
+│  ├─ hooks/              # Reusable hooks
+│  ├─ lib/                # Shared utilities (db, auth, config)
+│  ├─ models/             # Mongoose models
+│  └─ types/              # Shared TypeScript types
+└─ package.json
+```
+
+## Roadmap
+
+- Add GitHub Actions CI (build, lint, typecheck) and replace the build badge with a workflow badge
+- Add integration tests for API routes (registration, admin export, certificates)
+- Add rate limiting for public APIs (contact/register) to reduce spam/abuse
+- Add admin UI improvements (search, pagination, export filters)
+- Improve observability (structured logs + production monitoring)
+
+## Contributing
+
+Contributions are welcome. See [CONTRIBUTING.md](./CONTRIBUTING.md) for setup, workflow, and guidelines.
+
+## License
+
+Licensed under the MIT License. See [LICENSE](./LICENSE).
+
+## Acknowledgements
+
+- NSDC VCET community and contributors
+- Vidyavardhini College of Engineering & Technology (VCET), Vasai
+- Next.js, React, Tailwind CSS, and the open-source ecosystem powering the project
