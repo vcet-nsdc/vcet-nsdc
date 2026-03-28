@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="public/assests/white NSDC logo.png" alt="NSDC VCET banner" width="100%" />
-</p>
+
 
 <p align="center">
   <img src="public/assests/white%20NSDC%20logo.png" alt="NSDC VCET Logo" width="120" />
