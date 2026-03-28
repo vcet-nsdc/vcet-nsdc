@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function RegisterPage() {
   return (
-    <div className="min-h-screen w-full overflow-x-hidden">
+    <div className="min-h-full w-full overflow-x-hidden">
       <main className="max-w-4xl mx-auto px-4 sm:px-6 pt-32 pb-20">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

@@ -176,7 +176,7 @@ export default function AdminPage() {
   // Login Screen
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen w-full flex items-center justify-center px-4 pt-20">
+      <div className="min-h-full w-full flex items-center justify-center px-4 pt-20">
         <div className="w-full max-w-md">
           <form onSubmit={handleLogin} className="bg-black/40 backdrop-blur-md rounded-2xl border border-white/10 shadow-xl p-8 sm:p-10">
             <div className="flex justify-center mb-6">
@@ -235,7 +235,7 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen w-full bg-black/20 pt-28 pb-20 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-full w-full bg-black/20 pt-28 pb-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-10 flex items-start justify-between">

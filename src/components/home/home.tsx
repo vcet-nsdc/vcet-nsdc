@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-full">
       {/* Hero Section */}
       <Suspense fallback={<div className="h-screen" />}>
         <HeroSection />

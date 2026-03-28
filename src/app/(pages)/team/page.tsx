@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 
 export default function TeamPage() {
   return (
-    <main className="min-h-screen py-20">
+    <main className="min-h-full py-20">
       <div className="max-w-7xl mx-auto px-6">
         <Teams />
       </div>
