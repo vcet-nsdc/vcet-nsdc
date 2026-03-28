@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/assests/final.png" alt="NSDC VCET banner" width="100%" />
+  <img src="public/assests/white NSDC logo.png" alt="NSDC VCET banner" width="100%" />
 </p>
 
 <p align="center">
