@@ -155,12 +155,8 @@ curl -H "Authorization: Basic <base64(username:password)>" http://localhost:3000
 
 If you don’t have your own screenshots yet, you can start with the included assets:
 
-- Banner: `public/assests/final.png`
-- Sample imagery: `public/assests/image.png`, `public/assests/techblitz.jpeg`
 
 Example embed:
-
-![NSDC VCET banner](public/assests/final.png)
 
 ## API
 
