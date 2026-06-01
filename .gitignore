@@ -12,7 +12,7 @@
 
 # testing
 /coverage
-
+make-commits.py
 # next.js
 /.next/
 /out/
