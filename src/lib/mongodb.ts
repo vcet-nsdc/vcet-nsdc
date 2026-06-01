@@ -29,6 +29,8 @@ export async function connectToDatabase() {
       serverSelectionTimeoutMS: 10000,  // Fail fast instead of waiting 30s+
       connectTimeoutMS: 10000,
       socketTimeoutMS: 20000,
+      maxPoolSize: 10,  // Bound concurrent connections (serverless-friendly)
+      minPoolSize: 0,
       family: 4,  // Force IPv4 — fixes SRV ETIMEOUT on many networks
     }).then(m => m).catch(err => {
       // Reset the promise so the next request retries
