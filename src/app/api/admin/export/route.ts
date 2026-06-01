@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
 import Registration from '@/models/Registration';
-import { verifyAdminAuth } from '@/lib/admin-auth';
+import { requirePermission } from '@/lib/rbac';
 import * as XLSX from 'xlsx';
 
 export async function GET(req: NextRequest) {
-  const authError = verifyAdminAuth(req);
-  if (authError) return authError;
+  const guard = await requirePermission('registration:export');
+  if (guard.error) return guard.error;
 
   try {
     await connectToDatabase();
