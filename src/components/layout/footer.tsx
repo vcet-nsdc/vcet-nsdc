@@ -122,13 +122,18 @@ export function Footer() {
 
         {/* Bottom border line */}
         <motion.div className="mt-12 pt-8 border-t border-gray-800" variants={itemVariants}>
-          <div className="text-center text-gray-400 text-sm">
-            <p className="mb-2 text-gray-300">
-              Developed by <br />
-              Suraj Phirke <br />
-              Bhavesh Verma | Madhusudan Chanda | Naman Pandey | Soham Pansare
-            </p>
-            <p>&copy; {new Date().getFullYear()} VCET. All rights are reserved to VCET NSDC.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-400 text-sm">
+            {/* Left side - Team info */}
+            <div className="space-y-2">
+              <p className="text-gray-300 font-semibold">LEAD DEVELOPER : Suraj Phirke</p>
+              <p className="text-gray-400">Team Members</p>
+              <p className="text-gray-300">Bhavesh Verma, Madhusudan Chanda, Naman Pandey, Soham Pansare</p>
+            </div>
+            {/* Right side - Copyright and version */}
+            <div className="text-right space-y-2">
+              <p className="text-gray-300">&copy; 2026 VCET. All rights reserved to VCET NSDC.</p>
+            
+            </div>
           </div>
         </motion.div>
       </motion.div>
