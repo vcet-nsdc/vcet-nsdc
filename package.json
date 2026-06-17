@@ -6,13 +6,19 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seed:admin": "node --env-file=.env scripts/seed-admin.mjs",
+    "migrate:events": "node --env-file=.env scripts/migrate-events.mjs",
+    "migrate:cms": "node --env-file=.env scripts/migrate-cms.mjs",
+    "migrate:proofs": "node --env-file=.env scripts/migrate-proofs.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-slot": "^1.2.3",
+    "bcryptjs": "^3.0.3",
     "class-variance-authority": "^0.7.1",
+    "cloudinary": "^2.10.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.12",
     "jspdf": "^4.2.0",
@@ -20,6 +26,7 @@
     "lucide-react": "^0.542.0",
     "mongoose": "^8.18.1",
     "next": "^16.1.6",
+    "next-auth": "^5.0.0-beta.31",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-hook-form": "^7.62.0",

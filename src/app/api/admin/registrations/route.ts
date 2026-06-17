@@ -1,33 +1,40 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
 import Registration from '@/models/Registration';
-import { verifyAdminAuth } from '@/lib/admin-auth';
+import { requirePermission } from '@/lib/rbac';
+import { getPagination, paginated, handleRouteError } from '@/server/http';
+import type { FilterQuery } from 'mongoose';
+import type { IRegistration } from '@/models/Registration';
 
 export async function GET(req: NextRequest) {
-  const authError = verifyAdminAuth(req);
-  if (authError) return authError;
+  const guard = await requirePermission('registration:read');
+  if (guard.error) return guard.error;
 
   try {
     await connectToDatabase();
 
     const { searchParams } = new URL(req.url);
     const domain = searchParams.get('domain');
+    const status = searchParams.get('status');
+    const pagination = getPagination(searchParams, 50);
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const filter: Record<string, any> = domain && domain !== 'all' ? { domain } : {};
-    const registrations = await Registration.find(filter, { paymentScreenshot: 0 }).sort({ createdAt: -1 }).lean();
+    const filter: FilterQuery<IRegistration> = {};
+    if (domain && domain !== 'all') filter.domain = domain;
+    if (status && status !== 'all') filter.status = status;
 
-    // Add a flag so the admin UI knows if a screenshot exists
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const data = (registrations as any[]).map(r => ({
-      ...r,
-      hasScreenshot: true,  // If it got saved, it has one (it's required)
-    }));
+    const [registrations, total] = await Promise.all([
+      Registration.find(filter, { paymentScreenshot: 0 })
+        .sort({ createdAt: -1 })
+        .skip(pagination.skip)
+        .limit(pagination.limit)
+        .lean(),
+      Registration.countDocuments(filter),
+    ]);
 
-    return NextResponse.json({ success: true, data }, { status: 200 });
+    const data = registrations.map((r) => ({ ...r, hasScreenshot: true }));
+
+    return paginated(data, total, pagination);
   } catch (error: unknown) {
-    console.error('Admin API Error:', error);
-    const msg = error instanceof Error ? error.message : 'Internal Server Error';
-    return NextResponse.json({ error: msg }, { status: 500 });
+    return handleRouteError(error);
   }
 }

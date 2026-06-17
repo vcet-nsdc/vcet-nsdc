@@ -195,6 +195,12 @@ const ShaderBackground = () => {
     let animationFrameId: number;
 
     const render = () => {
+      // Skip GPU work when the tab is hidden to save battery/CPU.
+      if (typeof document !== 'undefined' && document.hidden) {
+        animationFrameId = requestAnimationFrame(render);
+        return;
+      }
+
       const currentTime = (Date.now() - startTime) / 1000;
 
       gl.clearColor(0.0, 0.0, 0.0, 1.0);

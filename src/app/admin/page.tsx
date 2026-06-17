@@ -1,9 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { Download, FileSpreadsheet, FileText, Loader2, Users, Filter, RefreshCw, Lock, LogOut } from "lucide-react";
-import jsPDF from "jspdf";
-import autoTable from "jspdf-autotable";
+import { signOut } from "next-auth/react";
+import { Download, FileSpreadsheet, FileText, Loader2, Users, Filter, RefreshCw, LogOut } from "lucide-react";
 
 interface Registration {
   _id: string;
@@ -23,73 +22,42 @@ const DOMAINS = [
   { key: "uiux", label: "UI/UX Challenge", color: "from-pink-500 to-rose-500" },
 ];
 
-function getAuthHeader(token: string) {
-  return { Authorization: `Basic ${token}` };
-}
-
 export default function AdminPage() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [authToken, setAuthToken] = useState("");
-  const [loginError, setLoginError] = useState("");
-  const [loginLoading, setLoginLoading] = useState(false);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
   const [registrations, setRegistrations] = useState<Registration[]>([]);
   const [loading, setLoading] = useState(false);
   const [exporting, setExporting] = useState(false);
   const [activeDomain, setActiveDomain] = useState("all");
   const [error, setError] = useState("");
 
-  // Check for existing session on mount
-  useEffect(() => {
-    const stored = sessionStorage.getItem("admin_token");
-    if (stored) {
-      setAuthToken(stored);
-      setIsAuthenticated(true);
-    }
-  }, []);
-
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoginLoading(true);
-    setLoginError("");
-    const token = btoa(`${username}:${password}`);
-    try {
-      const res = await fetch("/api/admin/registrations?domain=all", {
-        headers: { Authorization: `Basic ${token}` },
-      });
-      if (res.status === 401) {
-        setLoginError("Invalid username or password");
-        return;
-      }
-      if (!res.ok) throw new Error("Connection error");
-      sessionStorage.setItem("admin_token", token);
-      setAuthToken(token);
-      setIsAuthenticated(true);
-    } catch {
-      setLoginError("Failed to connect. Please try again.");
-    } finally {
-      setLoginLoading(false);
-    }
+  const redirectToLogin = () => {
+    window.location.href = "/admin/login";
   };
 
   const handleLogout = () => {
-    sessionStorage.removeItem("admin_token");
-    setIsAuthenticated(false);
-    setAuthToken("");
-    setRegistrations([]);
+    signOut({ callbackUrl: "/admin/login" });
+  };
+
+  // Fetch the screenshot via the session cookie and open the blob in a new tab.
+  const viewScreenshot = async (id: string) => {
+    try {
+      const res = await fetch(`/api/admin/screenshot/${id}`);
+      if (res.status === 401) { redirectToLogin(); return; }
+      if (!res.ok) throw new Error("Failed to load screenshot");
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      window.open(url, "_blank", "noopener,noreferrer");
+      setTimeout(() => URL.revokeObjectURL(url), 60_000);
+    } catch (err: unknown) {
+      alert(err instanceof Error ? err.message : "Failed to load screenshot");
+    }
   };
 
   const fetchRegistrations = useCallback(async (domain: string) => {
-    if (!authToken) return;
     setLoading(true);
     setError("");
     try {
-      const res = await fetch(`/api/admin/registrations?domain=${domain}`, {
-        headers: getAuthHeader(authToken),
-      });
-      if (res.status === 401) { handleLogout(); return; }
+      const res = await fetch(`/api/admin/registrations?domain=${domain}`);
+      if (res.status === 401) { redirectToLogin(); return; }
       const json = await res.json();
       if (!res.ok) throw new Error(json.error || "Failed to fetch");
       setRegistrations(json.data || []);
@@ -98,12 +66,11 @@ export default function AdminPage() {
     } finally {
       setLoading(false);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [authToken]);
+  }, []);
 
   useEffect(() => {
-    if (isAuthenticated) fetchRegistrations(activeDomain);
-  }, [activeDomain, isAuthenticated, fetchRegistrations]);
+    fetchRegistrations(activeDomain);
+  }, [activeDomain, fetchRegistrations]);
 
   const handleDomainChange = (domain: string) => {
     setActiveDomain(domain);
@@ -112,10 +79,8 @@ export default function AdminPage() {
   const handleExportExcel = async () => {
     setExporting(true);
     try {
-      const res = await fetch(`/api/admin/export?domain=${activeDomain}`, {
-        headers: getAuthHeader(authToken),
-      });
-      if (res.status === 401) { handleLogout(); return; }
+      const res = await fetch(`/api/admin/export?domain=${activeDomain}`);
+      if (res.status === 401) { redirectToLogin(); return; }
       if (!res.ok) throw new Error("Export failed");
       const blob = await res.blob();
       const url = URL.createObjectURL(blob);
@@ -131,7 +96,13 @@ export default function AdminPage() {
     }
   };
 
-  const handleExportPDF = () => {
+  const handleExportPDF = async () => {
+    // Dynamically import heavy PDF libs only when the user actually exports.
+    const [{ default: jsPDF }, autoTableMod] = await Promise.all([
+      import("jspdf"),
+      import("jspdf-autotable"),
+    ]);
+    const autoTable = autoTableMod.default;
     const doc = new jsPDF({ orientation: "landscape" });
 
     doc.setFontSize(18);
@@ -172,67 +143,6 @@ export default function AdminPage() {
     ...d,
     count: d.key === "all" ? registrations.length : registrations.filter((r) => r.domain === d.key).length,
   }));
-
-  // Login Screen
-  if (!isAuthenticated) {
-    return (
-      <div className="min-h-full w-full flex items-center justify-center px-4 pt-20">
-        <div className="w-full max-w-md">
-          <form onSubmit={handleLogin} className="bg-black/40 backdrop-blur-md rounded-2xl border border-white/10 shadow-xl p-8 sm:p-10">
-            <div className="flex justify-center mb-6">
-              <div className="h-16 w-16 bg-purple-600/20 rounded-full flex items-center justify-center">
-                <Lock className="h-8 w-8 text-purple-400" />
-              </div>
-            </div>
-            <h1 className="text-3xl font-bold text-white text-center mb-2">
-              Admin <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Login</span>
-            </h1>
-            <p className="text-white/50 text-center text-sm mb-8">Enter credentials to access the dashboard</p>
-
-            {loginError && (
-              <div className="mb-6 p-3 bg-red-500/10 border border-red-500/50 rounded-lg text-red-200 text-sm text-center">
-                {loginError}
-              </div>
-            )}
-
-            <div className="space-y-4">
-              <div>
-                <label className="text-sm font-medium text-white/80 block mb-1">Username</label>
-                <input
-                  required
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  className="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-white placeholder-white/30 outline-none focus:ring-2 focus:ring-purple-500/50 transition-all"
-                  placeholder="Enter username"
-                />
-              </div>
-              <div>
-                <label className="text-sm font-medium text-white/80 block mb-1">Password</label>
-                <input
-                  required
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-white placeholder-white/30 outline-none focus:ring-2 focus:ring-purple-500/50 transition-all"
-                  placeholder="Enter password"
-                />
-              </div>
-            </div>
-
-            <button
-              type="submit"
-              disabled={loginLoading}
-              className="mt-6 w-full py-3 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold hover:from-purple-500 hover:to-blue-500 transition-all disabled:opacity-60 flex items-center justify-center gap-2"
-            >
-              {loginLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Lock className="w-5 h-5" />}
-              {loginLoading ? "Authenticating..." : "Login"}
-            </button>
-          </form>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-full w-full bg-black/20 pt-28 pb-20 px-4 sm:px-6 lg:px-8">
@@ -379,10 +289,10 @@ export default function AdminPage() {
                       </td>
                       <td className="px-4 py-3 text-white/70 font-mono text-xs">{r.transactionId}</td>
                       <td className="px-4 py-3">
-                        <a href={`/api/admin/screenshot/${r._id}?auth=${authToken}`} target="_blank" rel="noopener noreferrer"
+                        <button type="button" onClick={() => viewScreenshot(r._id)}
                           className="text-purple-400 hover:text-purple-300 underline text-xs flex items-center gap-1">
                           <Download className="w-3 h-3" /> View
-                        </a>
+                        </button>
                       </td>
                       <td className="px-4 py-3 text-white/50 text-xs whitespace-nowrap">
                         {new Date(r.createdAt).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" })}

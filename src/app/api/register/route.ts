@@ -1,9 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
+import { rateLimit } from '@/lib/rate-limit';
 import Registration from '@/models/Registration';
 
 export async function POST(req: NextRequest) {
   try {
+    // 0. Rate limit: 5 registrations per 10 minutes per IP
+    const limited = await rateLimit(req, { name: 'register', limit: 5, windowMs: 10 * 60 * 1000 });
+    if (limited) return limited;
+
     // 1. Connect to database FIRST — fail fast if DB is unreachable
     await connectToDatabase();
 

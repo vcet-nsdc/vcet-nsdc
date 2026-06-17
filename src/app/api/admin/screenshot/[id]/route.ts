@@ -1,26 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
 import Registration from '@/models/Registration';
-import { verifyAdminAuth } from '@/lib/admin-auth';
+import { requirePermission } from '@/lib/rbac';
 
 export async function GET(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  // Support auth via query param (for clicking links in new tabs)
-  const { searchParams } = new URL(req.url);
-  const authParam = searchParams.get('auth');
-  if (authParam) {
-    // Reconstruct the header-based auth check
-    const headers = new Headers(req.headers);
-    headers.set('authorization', `Basic ${authParam}`);
-    const modifiedReq = new NextRequest(req.url, { headers });
-    const authError = verifyAdminAuth(modifiedReq);
-    if (authError) return authError;
-  } else {
-    const authError = verifyAdminAuth(req);
-    if (authError) return authError;
-  }
+  // Session-based auth via RBAC. The previous ?auth= query param leaked Base64
+  // credentials into logs/history/referrers and has been removed.
+  const guard = await requirePermission('registration:read');
+  if (guard.error) return guard.error;
 
   try {
     await connectToDatabase();
