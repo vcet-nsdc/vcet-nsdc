@@ -262,9 +262,7 @@ Body (JSON):
 { "action": "share", "imageData": "data:image/png;base64,..." }
 ```
 
-### DELETE /api/certificates/:id
 
-Deletes a certificate by ID.
 
 ### GET /api/admin/registrations?domain=...
 
